@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\Andriod\\ELApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mr\\values-mr.xml",
+            "outputFile": "F:\\AndriodLearning\\EL_local\\ELApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mr\\values-mr.xml",
             "map": [
                 {
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\3fd661db4e3a472b9ca31b3850c95f70\\res\\values-mr\\values-mr.xml",
