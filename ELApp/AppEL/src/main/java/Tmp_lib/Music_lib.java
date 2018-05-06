@@ -33,6 +33,13 @@ c. 网络上的媒体文件
  * ———4.26
  * */
 
+/*
+ * 我再也不敢了,一定好好地同步remote，好好地写文档
+ * ...orz
+ *       ——5.5
+ * */
+
+
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -66,6 +73,27 @@ public class Music_lib {
 
     }
 
+    public static MediaPlayer playExternalAbsolutePath(MediaPlayer mediaPlayer, String source) {
+        try {
+            if (mediaPlayer == null) {
+                mediaPlayer = Music_lib.GetMediaPlayer();
+            }
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+                return mediaPlayer;
+            }
+            File file = new File(source);
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(file.getPath());
+            mediaPlayer.prepareAsync();
+            MediaPlayer finalMediaPlayer = mediaPlayer;
+            mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mediaPlayer;
+    }
+
     /**
      * @param source :The external source(like in the sdcards)
      */
@@ -93,9 +121,6 @@ public class Music_lib {
     }
 
     public static MediaPlayer ContinueToPlay(MediaPlayer mediaPlayer) {
-        if (mediaPlayer == null) {
-            mediaPlayer = Music_lib.GetMediaPlayer();
-        }
         mediaPlayer.start();
         return mediaPlayer;
     }
@@ -160,6 +185,16 @@ public class Music_lib {
         return mediaPlayer;
     }
 
+    public static MediaPlayer LoopPlayExternalAbsolutePath(MediaPlayer mediaPlayer,
+                                                           String source, boolean pro) {
+        mediaPlayer.setLooping(pro);
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (pro) playExternalAbsolutePath(mediaPlayer, source);
+            else stop(mediaPlayer);
+        });
+        return mediaPlayer;
+    }
+
     public static MediaPlayer ChangeToPlayAnotherExternal(MediaPlayer mediaPlayer, String source) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
         mediaPlayer = Music_lib.playExternal(mediaPlayer, source);
@@ -177,6 +212,24 @@ public class Music_lib {
             , int rawFile) {
         mediaPlayer = Music_lib.stop(mediaPlayer);
         mediaPlayer = Music_lib.play(context, mediaPlayer, rawFile);
+        return mediaPlayer;
+    }
+
+    public static MediaPlayer ChangeToPlayAnotherExternalAbsolutePath(MediaPlayer mediaPlayer,
+                                                                      String source) {
+        mediaPlayer = Music_lib.stop(mediaPlayer);
+        mediaPlayer = Music_lib.playExternalAbsolutePath(mediaPlayer, source);
+        return mediaPlayer;
+    }
+
+    /**
+     * @param left:The  left road volume.
+     * @param right:The right road volume.
+     */
+    public static MediaPlayer ChangeVolume(MediaPlayer mediaPlayer, double left, double right) {
+        float leftRate = (float) left;
+        float rightRate = (float) right;
+        mediaPlayer.setVolume(leftRate, rightRate);
         return mediaPlayer;
     }
 
@@ -199,7 +252,8 @@ public class Music_lib {
         mediaPlayer.reset();
         AssetManager am = context.getAssets();
         AssetFileDescriptor afd = am.openFd("music/" + string);
-        mediaPlayer.setDataSource(afd.getFileDescriptor());
+        mediaPlayer.setDataSource(afd.getFileDescriptor()
+                , afd.getStartOffset(), afd.getLength());
         mediaPlayer.prepareAsync();
         MediaPlayer finalMediaPlayer = mediaPlayer;
         mediaPlayer.setOnPreparedListener(mp -> finalMediaPlayer.start());

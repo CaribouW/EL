@@ -1,15 +1,24 @@
 package Tmp_lib;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 /*
 * 得到SD卡，APP路径和文件
@@ -17,9 +26,36 @@ import java.io.InputStream;
 * */
 
 public class File_IO_Lib {
-//    public static String[] getAssetsAbsolutePath(Context context, String string) {
-//
-//    }
+    /**
+     * @return SDcard Absolute Path of String
+     */
+    public static String getSDPath() {
+        return getSDFile().getAbsolutePath();
+    }
+
+    /**
+     * @return SDcard rootPath's file
+     */
+    public static File getSDFile() {
+        File sdDir = null;
+        boolean sdCardExist = Environment.getExternalStorageState().equals(
+                android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
+        if (sdCardExist) {
+            sdDir = Environment.getExternalStorageDirectory().getAbsoluteFile();// 获取根目录
+        } else {
+            Log.e("ERROR", "没有内存卡");
+        }
+        return sdDir;
+    }
+
+
+    public static File getAppFile(Context context) {
+        return context.getApplicationContext().getFilesDir();
+    }
+
+    public static String getAppPath(Context context) {
+        return getAppFile(context).getAbsolutePath();
+    }
 
     /**
      * Get the inputStream of the assets file
@@ -33,7 +69,6 @@ public class File_IO_Lib {
     }
 
     public static Uri getUriRes(Context context, int rawFile) {
-
         return Uri.parse("android.resource://" + context.getPackageName() + "/" + rawFile);
     }
 
@@ -44,55 +79,6 @@ public class File_IO_Lib {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private static byte[] InputStreamToByte(InputStream is) throws IOException {
-        ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
-        int ch;
-        while ((ch = is.read()) != -1) {
-            bytestream.write(ch);
-        }
-        byte imgdata[] = bytestream.toByteArray();
-        bytestream.close();
-        return imgdata;
-    }
-
-    /**
-     * 获取sd卡的缓存路径， 一般在卡中sdCard就是这个目录
-     *
-     * @return SDPath
-     */
-    public static String getSDPath() {
-        return getSDcardDic().getAbsolutePath();
-    }
-
-    /**
-     * @return SDcardDic
-     */
-    public static File getSDcardDic() {
-        File sdDir = null;
-        boolean sdCardExist = Environment.getExternalStorageState().equals(
-                android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
-        if (sdCardExist) {
-            sdDir = Environment.getExternalStorageDirectory().getAbsoluteFile();// 获取根目录
-        } else {
-            Log.e("ERROR", "没有内存卡");
-        }
-        return sdDir;
-    }
-
-    /**
-     * 获取缓存文件夹目录 如果不存在创建 否则则创建文件夹
-     *
-     * @return filePath
-     */
-    public static String isExistsFilePath() {
-        String filePath = getSDPath();
-        File file = new File(filePath);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        return filePath;
     }
 
     /**
@@ -130,19 +116,102 @@ public class File_IO_Lib {
         }
     }
 
+    /**
+     * The buffPath is in the appPath.
+     */
+    public static File getAllSameSuffixPath(Context context, String suffix, String bufferedFile, boolean sd_app) throws IOException {
+        List<String> data = new LinkedList<>();
+        File targetDic;
+        if (sd_app)
+            targetDic = new File(getSDPath());
+        else
+            targetDic = new File(getAppPath(context));
+        File des = new File(getAppPath(context) + bufferedFile);
+        data = getSuffixFile(data, targetDic.getAbsolutePath(), suffix);
+        return copyFromList(des.getAbsolutePath(), data);
+    }
 
-    public static byte[] WriteSomething(Context context, String string) {
-        byte[] bytes = new byte[10];
-        try {
-            InputStream inputStream = context.getResources()
-                    .getAssets()
-                    .open("music/bgm4.mp3");
-            bytes = new byte[20];
-            inputStream.read(bytes, 0, 5);
+    /**
+     * You have to ask for permission the first time
+     * you are going to visit the storage of the sdCard.
+     *
+     * */
+    public boolean IsPermitted(Context context) {
+        return ContextCompat.checkSelfPermission(context
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+    }
+    public void requestPermissions(Activity context) {
+        ActivityCompat.requestPermissions(context, new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }, 1);
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+    /**
+     * 读取sd卡上指定后缀的所有文件
+     *
+     * @param files    返回的所有文件
+     * @param filePath 路径(可传入sd卡路径)
+     * @param suffere  后缀名称 比如 .gif
+     * @return
+     */
+    private static List<String> getSuffixFile(List<String> files, String filePath, String suffere) {
+
+        File f = new File(filePath);
+
+        if (!f.exists()) {
+            return null;
         }
-        return bytes;
+
+        File[] subFiles = f.listFiles();
+        for (File subFile : subFiles) {
+            if (subFile.isFile() && subFile.getName().endsWith(suffere)) {
+                files.add(subFile.getAbsolutePath());
+            } else if (subFile.isDirectory()) {
+                getSuffixFile(files, subFile.getAbsolutePath(), suffere);
+            } else {
+                //非指定目录文件 不做处理
+            }
+
+        }
+
+        return files;
+    }
+
+    private static File copyFromList(String path, List<String> list) throws IOException {
+        File file = new File(path);
+        BufferedWriter bufferedWriter =
+                new BufferedWriter(new FileWriter(file));
+        for (String string : list) {
+            bufferedWriter.write(string + "\n");
+            bufferedWriter.flush();
+        }
+        bufferedWriter.close();
+        return file;
+    }
+
+
+    private static byte[] InputStreamToByte(InputStream is) throws IOException {
+        ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
+        int ch;
+        while ((ch = is.read()) != -1) {
+            bytestream.write(ch);
+        }
+        byte imgdata[] = bytestream.toByteArray();
+        bytestream.close();
+        return imgdata;
+    }
+
+    /**
+     * 获取缓存文件夹目录 如果不存在创建 否则则创建文件夹
+     *
+     * @return filePath
+     */
+    private static String isExistsFilePath() {
+        String filePath = getSDPath();
+        File file = new File(filePath);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return filePath;
     }
 }

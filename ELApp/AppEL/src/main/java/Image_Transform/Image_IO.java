@@ -2,6 +2,7 @@ package Image_Transform;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
@@ -12,8 +13,9 @@ import com.squareup.picasso.Transformation;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
-/**
+/**compile 'com.sunfusheng:glideimageview:1.0.0'
  * 保存图片的类
  */
 public class Image_IO {
@@ -25,7 +27,7 @@ public class Image_IO {
      * @param source      :The source in the  sdcard/pictures/...
      * @param imageView   :the ImageView that contains the picture
      */
-    public static void SetImage(Context context, String source, ImageView imageView) {
+    public static void SetImageExternal(Context context, String source, ImageView imageView) {
         //placeHolder  error.  image waiting
         File file = new File(Environment.getExternalStorageDirectory()
                 , "/pictures/" + source);
@@ -33,6 +35,7 @@ public class Image_IO {
         Picasso.with(context)
                 .load(file)
                 .transform(getTransformation(imageView))
+                .placeholder(R.raw.loading)
                 .into(imageView);
     }
 
@@ -46,10 +49,23 @@ public class Image_IO {
         Picasso.with(context)
                 .load(R_Source)
                 .transform(getTransformation(imageView))
+                .placeholder(R.raw.loading)
                 .into(imageView);
     }
 
-    public static void SetImage_Circlize(Context context, String source, ImageView imageView) {
+    public static void SetImage(Context context, String source, ImageView imageView) {
+        try {
+            InputStream inputStream = null;
+            inputStream = context.getAssets().open("pictures/" + source);
+            Drawable drawable = Drawable.createFromStream(inputStream, null);
+            imageView.setImageDrawable(drawable);
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void SetImageExternal_Circlize(Context context, String source, ImageView imageView) {
         File file = new File(Environment.getExternalStorageDirectory()
                 , "/pictures/" + source);
 
@@ -77,7 +93,7 @@ public class Image_IO {
     public static void saveImage(Bitmap bitmap, String imageName)
             throws Exception {
         String filePath = isExistsFilePath();
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         File file = new File(filePath, imageName);
         try {
             fos = new FileOutputStream(file);
@@ -109,7 +125,7 @@ public class Image_IO {
      *
      * @return SDPath
      */
-    private static String getSDPath() {
+    public static String getSDPath() {
         return getSDcardDic().getAbsolutePath();
     }
 
