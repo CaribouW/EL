@@ -1,4 +1,6 @@
+
 apply plugin: 'com.android.application'
+
 android {
     compileSdkVersion 27
 
@@ -23,31 +25,44 @@ android {
     }
 
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
-    compile 'com.github.iwgang:countdownview:2.1.6'//计时器
-    compile 'com.roger.catloadinglibrary:catloadinglibrary:1.0.4'//1
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
-    compile 'com.github.iwgang:countdownview:2.1.6'//计时器
-    compile 'com.roger.catloadinglibrary:catloadinglibrary:1.0.4'//猫猫加载...
-
+    compile 'com.github.iwgang:countdownview:2.1.6'
+    //计时器
+    compile 'com.roger.catloadinglibrary:catloadinglibrary:1.0.4'
+    //猫猫加载...
+    compile 'com.carson_ho:Kawaii_LoadingView:1.0.0'
+    //一个可爱 & 小清新的加载等待Android控件  orz
+    //    compile 'com.github.Todd-Davies:ProgressWheel:1.2'//圆形的进程条
+    compile 'io.github.yuweiguocn:SquareLoading:1.3.0'
+    //方块loading
+    implementation 'com.ramotion.navigationtoolbar:navigation-toolbar:0.1.0'
+    //主界面页
+    compile 'site.gemus:openingstartanimation:1.0.0'
+    //开场动画啦啦啦
+    compile 'com.github.florent37:expansionpanel:1.0.0'
+    //折叠
+    compile 'com.github.yhaolpz:FloatWindow:1.0.6'
+    //悬浮按钮
+    compile 'com.coder:circlebar:1.0.0'
+    //进度条1
+    compile 'com.github.idic779:monthweekmaterialcalendarview:1.5'
+    //日历组件
+    compile 'com.alibaba:fastjson:1.1.55.android'
+    //Json依赖
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
-
-
-    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 repositories {
     mavenCentral()
@@ -55,4 +70,7 @@ repositories {
     maven {
         url "http://dl.bintray.com/jlmd/maven"
     }
+}
+repositories {
+    maven { url "https://jitpack.io" }
 }

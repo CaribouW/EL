@@ -20,11 +20,6 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 
-/*
-* 得到SD卡，APP路径和文件
-* 得到指定后缀的文件并且进行buff缓存
-* */
-
 public class File_IO_Lib {
     /**
      * @return SDcard Absolute Path of String

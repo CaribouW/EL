@@ -3,4 +3,7 @@
     <string name="title_home">主界面</string>
     <string name="title_dashboard">新建任务</string>
     <string name="title_notifications">副本界面</string>
+    <string name="taskName">任务名称</string>
+    <string name="taskLevel">紧急程度</string>
+    <string name="titleName">新建任务</string>
 </resources>

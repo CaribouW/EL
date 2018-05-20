@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <cn.iwgang.countdownview.CountdownView
+            android:id="@+id/countingDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isHideTimeBackground="true"
+            app:isShowDay="true"
+            app:isShowHour="true"
+            app:isShowMillisecond="true"
+            app:isShowMinute="true"
+            app:isShowSecond="true"
+            app:isTimeTextBold="true"
+            app:suffixGravity="bottom"
+            app:suffixHour="时"
+            app:suffixMillisecond="毫秒"
+            app:suffixMinute="分"
+            app:suffixSecond="秒"
+            app:suffixTextColor="#000000"
+            app:suffixTextSize="12sp"
+            app:timeTextColor="#000000"
+            app:timeTextSize="22sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="playAndCount"
+        android:text="play"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/changeImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btn3Event"
+        android:text="changeImage"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/getInfo"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:onClick="btn2Event"
+        android:text="getInfo"
+        tools:ignore="HardcodedText" />
+
+    <scut.carson_ho.kawaii_loadingview.Kawaii_LoadingView
+
+        android:id="@+id/Kawaii_LoadingView"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+
+        android:background="#161943"
+        app:blockColor="#ffffff"
+
+        app:blockInterval="8dp"
+        app:fixBlock_Angle="5"
+        app:half_BlockWidth="15dp"
+
+        app:initPosition="0"
+        app:isClock_Wise="false"
+        app:lineNumber="3"
+
+        app:moveBlock_Angle="20"
+        app:moveSpeed="500"
+        app:move_Interpolator="@android:anim/bounce_interpolator"
+
+        />
+    <io.github.yuweiguocn.lib.squareloading.SquareLoading
+        android:id="@+id/squareLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#180d10"
+        app:squareColor="@android:color/white"
+        app:squareSize="18dp"
+        app:squareCorner="2dp"
+        app:dividerSize="2dp"
+        app:xCount="4"
+        app:yCount="4"
+        />
+
+</LinearLayout>
