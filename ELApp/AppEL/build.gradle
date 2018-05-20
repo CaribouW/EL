@@ -24,6 +24,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
     compile 'com.github.iwgang:countdownview:2.1.6'
     //计时器
@@ -40,6 +43,8 @@ dependencies {
     //开场动画啦啦啦
     compile 'com.github.florent37:expansionpanel:1.0.0'
     //折叠
+    compile 'com.alibaba:fastjson:1.1.55.android'
+    //Json依赖
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
@@ -52,6 +57,16 @@ dependencies {
     //compile 'com.github.ozodrukh:CircularReveal:(latest-release)@aar'
     compile 'com.yalantis:phoenix:1.2.3'
     //刷新动画
+    compile 'com.android.support:design:27.1.1'
+    //侧滑设计
+    compile 'com.github.youngkaaa:circleview:0.1.0'
+    //把图片变圆
+    implementation 'com.github.WelliJohn:ASwipeLayout:0.0.2'
+    //    compile ('com.github.huburt-Hu:NewbieGuide:v2.1.0') {
+    //        exclude group: 'com.android.support'
+    //    }//透明指示层
+    //    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
+
 }
 repositories {
     mavenCentral()

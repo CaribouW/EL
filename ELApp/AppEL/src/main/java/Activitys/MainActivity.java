@@ -1,7 +1,9 @@
 package Activitys;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,17 +11,25 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lenovo.elapp.AchievementActivity;
+import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Tmp_lib.BottomNavigationView_Lib;
 import Tmp_lib.Music_lib;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,35 +44,49 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar!=null){
             actionBar.hide();
         }
-        PullToRefreshView mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
-        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+        Button button_ = findViewById(R.id.titleButton);
+        button_.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-                mPullToRefreshView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPullToRefreshView.setRefreshing(false);
-                    }
-                },1);
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewTaskActivity.class);
+                startActivity(intent);
             }
         });
+
     }
 
     private void NavigationViewTask() {
         NavigationView navigationView = findViewById(R.id.navigation_view_left);
-        navigationView.setNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
+        navigationView.setItemIconTintList(null);
+        TextView slideshow=(TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+                findItem(R.id.nav_coin));
+        slideshow.setGravity(Gravity.CENTER_VERTICAL);
+        slideshow.setTypeface(null, Typeface.BOLD);
+        slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
+        slideshow.setText("7");
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                /*switch(item.getItemId()){
+                    case R.id.nav_achievement:
+                        Intent intent1 = new Intent(MainActivity.this,NewTaskActivity.class);
+                        startActivity(intent1);
+                }*/
+
+                return true;
             }
-            return false;
         });
+
     }
 
     private void BottomNavigationTask() {
         Fragment_Lib.replaceFragment(this, new MainActivityLeftFragment(), R.id.root_Frame_layout);
         BottomNavigationView navigation = findViewById(R.id.MainActivityNavigation);
+        navigation.setItemIconTintList(null);
         navigation.setOnNavigationItemSelectedListener(
                 BottomNavigationView_Lib.Get_OnNavigationItemselectedListener(this));
+        navigation.setItemIconTintList(null);
     }
 
     @Override

@@ -3,5 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="title">#080fdb</color>
+    <color name="title">#f1f1f5</color>
+    <color name="colorFont">#a2db36</color>
+    <color name="taskName">#ce1e15</color>
+    <color name="taskLevel">#cc0b8170</color>
+    <color name="red">#f9fa1815</color>
+    <color name="orange">#cce44e09</color>
+    <color name="yellow">#f9e6fb00</color>
+    <color name="green">#cc03e40f</color>
+    <color name="toolbar">#064fad</color>
+    <color name="stroke">#00ffee</color>
 </resources>

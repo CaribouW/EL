@@ -63,6 +63,7 @@ public class Image_IO {
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
@@ -83,7 +84,6 @@ public class Image_IO {
                 .transform(getTransformation(imageView))
                 .transform(new CircleTransform())
                 .into(imageView);
-
     }
 
     /**
