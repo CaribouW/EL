@@ -7,8 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.example.testlfm.CircleTransform;
-import com.example.testlfm.R;
+import com.example.lenovo.elapp.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -16,6 +15,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import Image_Transform.CircleTransform;
 
 /**
  * compile 'com.sunfusheng:glideimageview:1.0.0'
