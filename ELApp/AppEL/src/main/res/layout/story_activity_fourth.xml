@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/e"
     tools:context="Story.storyFourthActivity">
 
 
@@ -20,12 +22,40 @@
         tools:layout_editor_absoluteY="422dp" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:onClick="sendMessage"
         android:text="Go Next!"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="264dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="337dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="339dp"
+        android:layout_height="97dp"
+        android:layout_below="@+id/toCount"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="16dp"
+        android:text=" 现在请选择
+      你自己的任务~"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="23dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="               Your Task ！"
+        android:textColor="@color/red"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="199dp" />
 
 </android.support.constraint.ConstraintLayout>
