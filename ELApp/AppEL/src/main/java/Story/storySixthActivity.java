@@ -30,16 +30,16 @@ public class storySixthActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //此处增加一个浮动窗口
-//                Intent intent =  new Intent(storySeventhActivity.this, NewTaskActivity.class);
-//                startActivity(intent);
+//                此处增加一个浮动窗口
+                Intent intent =  new Intent(storySixthActivity.this, storySixthPlusActivity.class);
+                startActivity(intent);
             }
         });
     }
 
-    /**Called when the user clicks the Send button*/
-    public void sendMessage(View view){
-        Intent intent =  new Intent(this,storySeventhActivity.class);
-        startActivity(intent);
-    }
+//    /**Called when the user clicks the Send button*/
+//    public void sendMessage(View view){
+//        Intent intent =  new Intent(this,storySeventhActivity.class);
+//        startActivity(intent);
+//    }
 }

@@ -25,11 +25,17 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:onClick="sendMessage"
         android:text="Go Next!"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="337dp" />
+        app:layout_constraintBottom_toTopOf="@+id/toCount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
         android:id="@+id/textView"
@@ -38,12 +44,14 @@
         android:layout_below="@+id/toCount"
         android:layout_centerHorizontal="true"
 
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
         android:text=" 现在请选择
       你自己的任务~"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="23dp" />
 
@@ -51,11 +59,15 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="               Your Task ！"
-        android:textColor="@color/red"
-        tools:layout_editor_absoluteX="85dp"
+        android:gravity="center"
+        android:hint="Your Task！"
+        android:background="@drawable/new_task_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="199dp" />
 
 </android.support.constraint.ConstraintLayout>
