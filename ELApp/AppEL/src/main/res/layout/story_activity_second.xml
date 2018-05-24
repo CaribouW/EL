@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="193dp"
+        android:layout_marginTop="400dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:onClick="sendMessage"
         android:text="Go Next!"
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toCount"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
 
         android:text="现在请开始一个
 30分钟的任务~"

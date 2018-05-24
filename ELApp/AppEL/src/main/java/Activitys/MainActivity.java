@@ -26,10 +26,15 @@ import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
 
+
 import com.example.lenovo.elapp.ClockActivity;
 
 import com.example.lenovo.elapp.CalendarActivity;
 
+
+import com.example.lenovo.elapp.CalendarActivity;
+import com.example.lenovo.elapp.CircleView;
+import com.example.lenovo.elapp.ClockActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
@@ -41,7 +46,6 @@ import Fragments.MainActivityLeftFragment;
 import Managers.ImageManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
-import Tmp_lib.myDatePickDialog;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+
+
         Button button = (Button) findViewById(R.id.main_return);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,16 +82,9 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setOnChangeLisener(null);
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
-                dialog.show();
-                myDatePickDialog dialog1 = new myDatePickDialog(MainActivity.this);
-                Toast.makeText(getApplicationContext(),dialog1.getText(),
-                        Toast.LENGTH_SHORT).show();
-                /*Intent intent = new Intent(MainActivity.this, ClockActivity.class);
-                startActivity(intent);*/
-
-                Intent intent = new Intent(MainActivity.this,CalendarActivity.class);
+                dialog.show();*/
+                Intent intent = new Intent(MainActivity.this,ClockActivity.class);
                 startActivity(intent);
-
 
             }
         });
