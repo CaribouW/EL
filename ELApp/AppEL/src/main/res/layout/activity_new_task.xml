@@ -94,6 +94,14 @@
                 android:textColor="@color/maincolor"
                 android:textSize="24sp" />
 
+            <include
+                layout="@layout/new_task_ring_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </include>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -117,6 +125,7 @@
                 android:textSize="24sp" />
 
             <EditText
+                android:id="@+id/task_remark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

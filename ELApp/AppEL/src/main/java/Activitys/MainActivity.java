@@ -25,11 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
-<<<<<<< HEAD
+
 import com.example.lenovo.elapp.ClockActivity;
-=======
+
 import com.example.lenovo.elapp.CalendarActivity;
->>>>>>> ced23a90957bb2c2d755342dab865854fe5a0518
+
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
