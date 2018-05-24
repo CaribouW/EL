@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
 import com.example.lenovo.elapp.CalendarActivity;
+import com.example.lenovo.elapp.CircleView;
+import com.example.lenovo.elapp.ClockActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+
+
         Button button = (Button) findViewById(R.id.main_return);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
                 dialog.show();*/
-                Intent intent = new Intent(MainActivity.this,CalendarActivity.class);
+                Intent intent = new Intent(MainActivity.this,ClockActivity.class);
                 startActivity(intent);
 
             }
