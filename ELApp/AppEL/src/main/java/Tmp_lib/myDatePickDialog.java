@@ -1,6 +1,7 @@
 package Tmp_lib;
 
 import android.content.Context;
+import android.widget.TextView;
 
 import com.codbking.widget.DatePickDialog;
 
@@ -11,6 +12,9 @@ import com.codbking.widget.DatePickDialog;
 public class myDatePickDialog extends DatePickDialog{
     public myDatePickDialog(Context context) {
         super(context);
+    }
+    public String getText(){
+        return "123";
     }
 
 
