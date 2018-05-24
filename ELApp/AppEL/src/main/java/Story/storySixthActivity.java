@@ -37,9 +37,9 @@ public class storySixthActivity extends AppCompatActivity {
         });
     }
 
-//    /**Called when the user clicks the Send button*/
-//    public void sendMessage(View view){
-//        Intent intent =  new Intent(this,storySeventhActivity.class);
-//        startActivity(intent);
-//    }
+    /**Called when the user clicks the Send button*/
+    public void sendMessage(View view){
+        Intent intent =  new Intent(this,storySixthPlusActivity.class);
+        startActivity(intent);
+    }
 }

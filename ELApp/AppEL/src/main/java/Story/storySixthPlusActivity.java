@@ -39,7 +39,7 @@ public class storySixthPlusActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                这是浮动窗口的 继续
+//                这是浮动窗口的 返回
                 Intent intent =  new Intent(storySixthPlusActivity.this, storySixthActivity.class);
                 startActivity(intent);
             }

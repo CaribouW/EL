@@ -24,10 +24,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toCount"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
 
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
         android:text="现在请开始一个
 30分钟的任务~"
         android:textColor="@color/white"
