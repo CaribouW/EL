@@ -11,10 +11,12 @@ import com.example.floatwindow.MoveType;
 import com.example.floatwindow.PermissionListener;
 import com.example.floatwindow.Screen;
 import com.example.floatwindow.ViewStateListener;
+import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 
 import Activitys.MainActivity;
 import Managers.MusicManager;
+import Story.storyMainActivity;
 
 import static android.content.ContentValues.TAG;
 
@@ -48,7 +50,7 @@ public class FloatingPlayer {
                 .setY(Screen.height, 0.3f)
                 .setMoveType(MoveType.slide, 100, -100)
                 .setMoveStyle(500, new BounceInterpolator())
-                .setFilter(true, MainActivity.class)
+                .setFilter(true, MainActivity.class, NewTaskActivity.class, storyMainActivity.class)
                 .setViewStateListener(mViewStateListener)
                 .setPermissionListener(mPermissionListener)
                 .setDesktopShow(true)
