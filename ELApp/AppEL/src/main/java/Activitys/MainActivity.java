@@ -25,19 +25,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
+import com.example.lenovo.elapp.CalendarActivity;
 import com.example.lenovo.elapp.ClockActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
+import com.moos.library.CircleProgressView;
 
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Managers.FileManager;
 import Managers.ImageManager;
+import Managers.TimeManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
+import cn.iwgang.countdownview.CountdownView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TimeManager timeManager=TimeManager.getTimeManager();
+        TextView textView = (TextView)findViewById(R.id.main_month);
+        textView.setText(timeManager.getMonth());
+        TextView textView2 = (TextView)findViewById(R.id.main_day);
+        textView2.setText(timeManager.getDayOfMonth());
+        TextView textView3 = (TextView)findViewById(R.id.main_year);
+        textView3.setText(timeManager.getYear());
+
+
 
         if (!FileManager.IsPermitted(this)) {
             FileManager.requestPermissions(this);
@@ -59,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
+        Button button1 = (Button) findViewById(R.id.main_title);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button button = (Button) findViewById(R.id.main_return);
         button.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
-        slideshow.setText("1");
+        //slideshow.setText("1");
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
