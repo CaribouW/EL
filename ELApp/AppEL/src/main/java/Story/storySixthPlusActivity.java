@@ -25,25 +25,25 @@ public class storySixthPlusActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
-        Button buttonGo = (Button)findViewById(R.id.buttonStory6go);
-        buttonGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                这是浮动窗口的 继续
-                Intent intent =  new Intent(storySixthPlusActivity.this, storySeventhActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button buttonBack = (Button)findViewById(R.id.buttonStory6back);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                这是浮动窗口的 返回
-                Intent intent =  new Intent(storySixthPlusActivity.this, storySixthActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button buttonGo = (Button)findViewById(R.id.buttonStory6go);
+//        buttonGo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                这是浮动窗口的 继续
+//                Intent intent =  new Intent(storySixthPlusActivity.this, storySeventhActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        Button buttonBack = (Button)findViewById(R.id.buttonStory6back);
+//        buttonBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                这是浮动窗口的 返回
+//                Intent intent =  new Intent(storySixthPlusActivity.this, storySixthActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 //    /**Called when the user clicks the Send button*/

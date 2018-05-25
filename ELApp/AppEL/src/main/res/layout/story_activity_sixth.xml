@@ -5,33 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/e"
-    tools:context="Story.storyFourthActivity">
+    tools:context="Story.storyFourthActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:onClick="sendMessage"
-        android:text="Go Next!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/buttonStory6"
+        android:id="@+id/buttonStory6plus"
         android:layout_width="129dp"
         android:layout_height="92dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginTop="208dp"
+
+        android:onClick="sendMessage"
+        android:background="@drawable/weibo"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
+        app:layout_constraintVertical_bias="0.004" />
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonStory6"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+        <!--android:onClick="sendMessage"-->
+        <!--android:text="Go Next!"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--tools:layout_editor_absoluteX="0dp" />-->
 
 </android.support.constraint.ConstraintLayout>

@@ -25,16 +25,15 @@ public class storySixthActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
-
-        Button button = (Button)findViewById(R.id.buttonStory6);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                此处增加一个浮动窗口
-                Intent intent =  new Intent(storySixthActivity.this, storySixthPlusActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button button = (Button)findViewById(R.id.buttonStory6plus);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                此处增加一个浮动窗口
+//                Intent intent =  new Intent(storySixthActivity.this, storySixthPlusActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     /**Called when the user clicks the Send button*/
