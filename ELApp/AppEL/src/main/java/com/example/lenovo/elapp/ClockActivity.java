@@ -11,13 +11,7 @@ import android.widget.Button;
 
 import com.moos.library.CircleProgressView;
 
-<<<<<<< HEAD
-import Activitys.MainActivity;
-
-import com.moos.library.CircleProgressView;
-=======
 import java.util.List;
->>>>>>> c73763ba211d54160c3bc0d3f93d82bc09df69b4
 
 import BackUps.WinJudgement;
 import Managers.CountingDown;
@@ -96,11 +90,8 @@ public class ClockActivity extends AppCompatActivity {
         //circleProgressView.setTrackColor(R.color.white);
         circleProgressView.setCircleBroken(true);
         circleProgressView.setTrackWidth(30);
-<<<<<<< HEAD
-        circleProgressView.setProgressDuration(5*1000);
-=======
+        circleProgressView.setProgressDuration(5 * 1000);
         circleProgressView.setProgressDuration(Math.toIntExact(second * 1000));
->>>>>>> c73763ba211d54160c3bc0d3f93d82bc09df69b4
         circleProgressView.setTrackEnabled(true);
         circleProgressView.setFillEnabled(false);
         circleProgressView.startProgressAnimation();
