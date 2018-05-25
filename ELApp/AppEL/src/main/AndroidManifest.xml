@@ -38,6 +38,7 @@
         <activity android:name="Story.storySixthActivity" />
         <activity android:name="Story.storySeventhActivity" />
         <activity android:name="Story.storySecondActivity" />
+        <activity android:name="Story.storySixthPlusActivity"/>
 
         <activity android:name="BackUps.GoodEvening" />
         <activity android:name="BackUps.GoodMorning" />
