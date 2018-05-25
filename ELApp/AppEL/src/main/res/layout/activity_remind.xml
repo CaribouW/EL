@@ -18,8 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="早安提醒"
-        android:textColor="@color/orange"
-        android:track="@drawable/ic_new_task_monday"
+        android:textColor="@color/maincolor"
         android:textOff="关闭"
         android:textOn="打开"
         android:theme="@style/mySwitch"
@@ -31,7 +30,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text=" " />
 
     <TextView
         android:layout_width="match_parent"
@@ -45,8 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="晚安提醒"
-        android:textColor="@color/orange"
-        android:track="@drawable/ic_new_task_monday"
+        android:textColor="@color/maincolor"
         android:textOff="关闭"
         android:textOn="打开"
         android:theme="@style/mySwitch"
@@ -57,7 +55,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text=" " />
 
 
 </LinearLayout>
