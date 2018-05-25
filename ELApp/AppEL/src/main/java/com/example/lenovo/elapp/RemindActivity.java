@@ -42,8 +42,7 @@ public class RemindActivity extends AppCompatActivity implements CompoundButton.
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RemindActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

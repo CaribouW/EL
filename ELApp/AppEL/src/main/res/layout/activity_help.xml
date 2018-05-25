@@ -21,16 +21,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:textColor="@color/darkpink"
-        android:text=" |金币的作用" />
+        android:textColor="@color/maincolor"
+        android:background="@drawable/new_task_edittext"
+        android:padding="10dp"
+        android:text="                    金币的作用                                            " />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:gravity="center|start"
-        android:textSize="20sp"
+
+        android:padding="5dp"
         android:text="@string/help1"
-        android:textColor="@color/pink"/>
+        android:textSize="20sp" />
 
 
     <TextView
@@ -39,16 +42,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:textColor="@color/darkpink"
-        android:text=" |什么是副本" />
+        android:background="@drawable/new_task_edittext"
+        android:padding="10dp"
+        android:textColor="@color/maincolor"
+        android:text="                     什么是副本                                                   " />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center|start"
         android:textSize="20sp"
-        android:text="@string/help2"
-        android:textColor="@color/pink"/>
+        android:text="@string/help2"/>
+
 
     <TextView
         android:id="@+id/help_text3"
@@ -56,14 +61,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:textColor="@color/darkpink"
-        android:text=" |如何解锁" />
+        android:textColor="@color/maincolor"
+        android:background="@drawable/new_task_edittext"
+        android:padding="10dp"
+        android:text="                      如何解锁                                              " />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center|start"
         android:textSize="20sp"
-        android:text="@string/help3"
-        android:textColor="@color/pink"/>
+        android:text="@string/help3"/>
+
 </LinearLayout>
