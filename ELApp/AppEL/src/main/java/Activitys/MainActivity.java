@@ -36,6 +36,8 @@ import com.moos.library.CircleProgressView;
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+import Managers.Achievement;
+import Managers.CoinManager;
 import Managers.FileManager;
 import Managers.ImageManager;
 import Managers.TimeManager;
@@ -46,6 +48,8 @@ import cn.iwgang.countdownview.CountdownView;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
+    CoinManager coinManager;
+
     private ImageManager imageManager = ImageManager.getImageManager();
 
     @Override
@@ -149,6 +153,9 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
         //slideshow.setText("1");
+//       coinManager=CoinManager.getCoinManager(this);
+//        coinManager.setCoin("100");
+//        slideshow.setText(coinManager.getCoin());
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
