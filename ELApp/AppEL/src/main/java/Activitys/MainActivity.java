@@ -14,10 +14,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,27 +32,27 @@ import com.example.lenovo.elapp.AchievementActivity;
 
 import com.example.lenovo.elapp.ClockActivity;
 
-import com.example.lenovo.elapp.CalendarActivity;
 
-
-import com.example.lenovo.elapp.CalendarActivity;
-import com.example.lenovo.elapp.CircleView;
-import com.example.lenovo.elapp.ClockActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
 import Managers.ImageManager;
+import Managers.Task;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
+import Tmp_lib.appInteraction;
 
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout linearLayout;
+
     private ImageManager imageManager = ImageManager.getImageManager();
 
     @Override
@@ -69,20 +72,6 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
-                //设置上下年分限制
-                dialog.setYearLimt(5);
-                //设置标题
-                dialog.setTitle("选择时间");
-                //设置类型
-                dialog.setType(DateType.TYPE_HM);
-                //设置消息体的显示格式，日期格式
-                dialog.setMessageFormat("yyyy-MM-dd HH:mm");
-                //设置选择回调
-                dialog.setOnChangeLisener(null);
-                //设置点击确定按钮回调
-                dialog.setOnSureLisener(null);
-                dialog.show();*/
                 Intent intent = new Intent(MainActivity.this,ClockActivity.class);
                 startActivity(intent);
 
@@ -91,6 +80,67 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(R.drawable.floatingbutton);
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
+
+        
+
+
+
+    }
+
+    public void setSingleTask(Task task){
+
+        if(task.getCondition()=="ready"){
+            //在指定位置新建一个容器
+            LinearLayout linearLayout1 = (LinearLayout)findViewById(R.id.readyPart);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout new_ll = new LinearLayout(MainActivity.this);
+            new_ll.setLayoutParams(params);
+            new_ll.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout1.addView(new_ll);
+            //设置textview
+            TextView textView = new TextView(MainActivity.this);
+            textView.setText(task.getTaskName());
+            textView.setTextSize(20);
+            new_ll.addView(textView,40,40);
+            if(task.getAnotherApp()!="None") {
+                Button button = new Button(MainActivity.this);
+                new_ll.addView(button,40,40);
+                switch (task.getAnotherApp()) {
+                    case "com.gotokeep.keep":
+                        button.setBackgroundResource(R.drawable.keep);
+                        break;
+                    case "com.shanbay.words":
+                        button.setBackgroundResource(R.drawable.scallop_word);
+                        break;
+                    case "com.tencent.tim" :
+                        button.setBackgroundResource(R.drawable.tim);
+                        break;
+                    case "com.sina.weibo" :
+                        button.setBackgroundResource(R.drawable.weibo);
+                        break;
+                }
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        appInteraction appInteraction1 = new appInteraction();
+                        appInteraction1.openApp(MainActivity.this,task.getAnotherApp());
+                    }
+                });
+            }
+            Button go_button = new Button(MainActivity.this);
+            go_button.setBackgroundResource(R.drawable.ic_chevron_right_black_24dp);
+            new_ll.addView(go_button,40,40);
+            go_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,ClockActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }else if(task.getCondition()=="success"){
+            LinearLayout linearLayout2 = (LinearLayout)findViewById(R.id.succeededPart);
+        }
 
     }
 

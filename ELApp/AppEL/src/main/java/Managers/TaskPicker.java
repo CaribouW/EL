@@ -31,20 +31,24 @@ public class TaskPicker {
         this.datePicker = datePicker;
         this.datOfMonth = String.valueOf(datePicker.getDayOfMonth());
         this.tasksPath = file_manager.getAppPath(context) + "tasks" + this.datOfMonth + ".txt";
+        this.taskList = new LinkedList<>();
     }
 
-    private TaskPicker() {
+    private TaskPicker(Context context) {
         this.file_manager = FileManager.getFileManager();
         this.timeManager = TimeManager.getTimeManager();
         this.datOfMonth = timeManager.getDayOfMonth();
+        this.tasksPath = file_manager.getAppPath(context) + "tasks" + this.datOfMonth + ".txt";
+        this.taskList = new LinkedList<>();
+
     }
 
     public static TaskPicker getTaskPicker(Context context, DatePicker datePicker) {
         return new TaskPicker(context, datePicker);
     }
 
-    public static TaskPicker getTaskPicker() {
-        return new TaskPicker();
+    public static TaskPicker getTaskPicker(Context context) {
+        return new TaskPicker(context);
     }
 
     public Task addTask(Task task) {
