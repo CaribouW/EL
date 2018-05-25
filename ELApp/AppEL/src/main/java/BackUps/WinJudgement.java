@@ -20,9 +20,12 @@ import Managers.MusicManager;
 import Managers.ScreenManager;
 import Managers.Task;
 import Managers.TaskManager;
+import cn.iwgang.countdownview.CountdownView;
 
 public class WinJudgement {
     private volatile MediaPlayer mediaPlayer;
+    private volatile boolean IsCountingBegin = false;
+    private volatile boolean IsCountingEnd = false;
     private volatile TaskManager taskManager;
     private volatile int MaxDelay = 5;
     private volatile ClockManager clockManager;
@@ -35,8 +38,9 @@ public class WinJudgement {
     private volatile boolean IsPause = true;
     private volatile boolean IsFailed = false;
     private volatile Class<? extends TaskFailed> FailedClass;
+    private volatile CountdownView countdownView;
 
-    private WinJudgement(Context context, Task task, MediaPlayer mediaPlayer, int MaxDelay) {
+    private WinJudgement(Context context, MediaPlayer mediaPlayer, int MaxDelay) {
         synchronized (this) {
             this.MaxDelay = MaxDelay;
             clockManager = ClockManager.getClockManager(context);
@@ -46,14 +50,13 @@ public class WinJudgement {
             taskManager = TaskManager.getTaskManager(context);
             fileManager = FileManager.getFileManager();
             achievement = Achievement.getAchievement(context);
-            this.task = task;
             this.FailedClass = TaskFailed.class;
             musicPathList = new LinkedList<>();
         }
     }
 
-    public static WinJudgement getWinJudgement(Context context, Task task, MediaPlayer mediaPlayer, int MaxDelay) {
-        return new WinJudgement(context, task, mediaPlayer, MaxDelay);
+    public static WinJudgement getWinJudgement(Context context, MediaPlayer mediaPlayer, int MaxDelay) {
+        return new WinJudgement(context, mediaPlayer, MaxDelay);
     }
 
     public void setMusicPathList(Context context, String suffix, String targeted) {
@@ -69,40 +72,45 @@ public class WinJudgement {
         }
     }
 
-    public Task JudgementStart(Context context) {
+    public synchronized Task JudgementStart(Context context) {
         Toast.makeText(context, "任务已经开始\n请少侠放下手机 开始静心专注吧~~~", Toast.LENGTH_LONG).show();
-        PlayInArray();
-        ScreenListenerPart(context, FailedClass);
-        this.task.setCondition("on");
         taskManager.addTask(task);
+        try {
+            countdownView.setOnCountdownEndListener(cv -> {
+                IsCountingEnd = true;
+                musicManager.pause(mediaPlayer);
+                IsPause = true;
+            });
+            PlayInArray();
+            ScreenListenerPart(context, FailedClass);
+        } catch (Exception e) {
+            return this.task;
+        }
         return this.task;
     }
 
-    private void PlayInArray() {
+    private synchronized void PlayInArray() {
+
         mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, musicPathList.get(0));
         AtomicReference<ListIterator<String>> iterator = new AtomicReference<>(musicPathList.listIterator());
         iterator.get().next();
-        if (!IsFailed) {
-            mediaPlayer.setOnCompletionListener(mp -> new Thread(() -> {
-                try {
-                    Thread.sleep(10 * 1000);
-                    if (!iterator.get().hasNext()) {
-                        iterator.set(musicPathList.listIterator());
-                    }
-                    mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, iterator.get().next());
-                    this.IsPause = false;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (!IsFailed && !IsCountingEnd) {
+                if (!iterator.get().hasNext()) {
+                    iterator.set(musicPathList.listIterator());
                 }
-            }).start());
-        }
+                mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, iterator.get().next());
+                this.IsPause = false;
+            }
+        });
+
     }
 
-    private void CountingUpStart(Context context, Class<?> cls) {
+    private synchronized void CountingUpStart(Context context, Class<?> cls) {
         new Thread(() -> clockManager.setDelay(context, cls, MaxDelay, 0)).start();
     }
 
-    private void CountingUpShutDown(Context context, Class<?> cls) {
+    private synchronized void CountingUpShutDown(Context context, Class<?> cls) {
         new Thread(() -> clockManager.cancelClock(context, cls)).start();
     }
 
@@ -112,13 +120,12 @@ public class WinJudgement {
 
             @Override
             public void onUserPresent() {
-                synchronized (this) {
-                    mediaPlayer = musicManager.pause(mediaPlayer);
-                    IsPause = true;
-                    Toast.makeText(context, "     任务进行中 请保持专注\n不要玩手机哦~", Toast.LENGTH_SHORT).show();
-                    CountingUpStart(context, cls);
-
-                }
+                if (IsFailed || IsCountingEnd)
+                    return;
+                mediaPlayer = musicManager.pause(mediaPlayer);
+                IsPause = true;
+                Toast.makeText(context, "     任务进行中 请保持专注\n不要玩手机哦~", Toast.LENGTH_SHORT).show();
+                CountingUpStart(context, cls);
             }
 
             @Override
@@ -128,12 +135,12 @@ public class WinJudgement {
 
             @Override
             public void onScreenOff() {
-                synchronized (this) {
-                    if (!IsFailed())
-                        mediaPlayer = musicManager.ContinueToPlay(mediaPlayer);
-                    CountingUpShutDown(context, cls);
-                    IsPause = false;
-                }
+                if (IsFailed || IsCountingEnd)
+                    return;
+                if (!IsFailed())
+                    mediaPlayer = musicManager.ContinueToPlay(mediaPlayer);
+                CountingUpShutDown(context, cls);
+                IsPause = false;
             }
         });
     }
@@ -142,4 +149,15 @@ public class WinJudgement {
         return IsFailed;
     }
 
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public CountdownView getCountdownView() {
+        return countdownView;
+    }
+
+    public void setCountdownView(CountdownView countdownView) {
+        this.countdownView = countdownView;
+    }
 }
