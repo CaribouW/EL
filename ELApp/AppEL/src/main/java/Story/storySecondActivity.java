@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.codbking.widget.DatePickDialog;
 import com.codbking.widget.bean.DateType;
+import com.example.lenovo.elapp.CircleView;
 import com.example.lenovo.elapp.R;
 import com.moos.library.CircleProgressView;
 
@@ -34,18 +35,18 @@ public class storySecondActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
-//      当时间到时 Done！
-        if(true){
-            TextView textView = (TextView)findViewById(R.id.buttonStory2);
-            textView.setText("Done!");
-        }
+////      当时间到时 Done！
+//        if(true){
+//            TextView textView = (TextView)findViewById(R.id.buttonStory2);
+//            textView.setText("Done!");
+//        }
     }
 
 
 
     /**Called when the user clicks the Send button*/
     public void sendMessage(View view){
-        Intent intent =  new Intent(this,storyThirdActivity.class);
+        Intent intent =  new Intent(this,CircleView.class);
         startActivity(intent);
     }
 
