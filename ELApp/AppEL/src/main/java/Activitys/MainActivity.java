@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(timeManager.getMonth());
         TextView textView2 = (TextView) findViewById(R.id.main_day);
         textView2.setText(timeManager.getDayOfMonth());
-        TextView textView3 = (TextView) findViewById(R.id.main_year);
+        TextView textView3 = (TextView) findViewById(R.id.main_year2);
         textView3.setText(timeManager.getYear());
 
 

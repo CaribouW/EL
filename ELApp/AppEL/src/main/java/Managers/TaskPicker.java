@@ -32,11 +32,10 @@ public class TaskPicker {
         this.datePicker = datePicker;
         this.datOfMonth = String.valueOf(datePicker.getDayOfMonth());
         this.tasksPath = file_manager.getAppPath(context) + "tasks" + this.datOfMonth + ".txt";
-<<<<<<< HEAD
         this.taskList = new LinkedList<>();
-=======
+
         this.coinManager = CoinManager.getCoinManager(context);
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
+
     }
 
     private TaskPicker(Context context) {
