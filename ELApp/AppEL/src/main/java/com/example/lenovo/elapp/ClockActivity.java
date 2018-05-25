@@ -1,32 +1,25 @@
 package com.example.lenovo.elapp;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
 import android.view.View;
 import android.widget.Button;
-
-import com.moos.library.CircleProgressView;
-
-import Activitys.MainActivity;
-=======
 
 import com.moos.library.CircleProgressView;
 
 import java.util.List;
 
 import BackUps.WinJudgement;
->>>>>>> 86e3315c2c931159a259e2080aa3243aa9c81374
 import Managers.CountingDown;
 import Managers.MusicManager;
 import Managers.Task;
 import Managers.TaskManager;
 import cn.iwgang.countdownview.CountdownView;
+
 
 /**
  * Created by hxh on 2018/5/24.
@@ -55,7 +48,6 @@ public class ClockActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-<<<<<<< HEAD
         Button circleBrn = (Button) findViewById(R.id.circle_return);
         circleBrn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +56,6 @@ public class ClockActivity extends AppCompatActivity {
             }
         });
 
-=======
->>>>>>> 86e3315c2c931159a259e2080aa3243aa9c81374
         //CircleProgressView
         CircleProgressView circleProgressView = findViewById(R.id.progressView_circle);
         CountdownView countdownView = findViewById(R.id.countingDown);
@@ -92,17 +82,8 @@ public class ClockActivity extends AppCompatActivity {
         circleProgressView.setEndProgress(100);
         //circleProgressView.setTrackColor(R.color.white);
         circleProgressView.setCircleBroken(true);
-<<<<<<< HEAD
         circleProgressView.setTrackWidth(30);
-        circleProgressView.setProgressDuration(5*1000);
-=======
-        circleProgressView.setTrackWidth(20);
-<<<<<<< HEAD
         circleProgressView.setProgressDuration(Math.toIntExact(second * 1000));
-=======
-        circleProgressView.setProgressDuration(second * 1000);
->>>>>>> 86e3315c2c931159a259e2080aa3243aa9c81374
->>>>>>> 372c325cca61c01dda8515cd08478433e69873ea
         circleProgressView.setTrackEnabled(true);
         circleProgressView.setFillEnabled(false);
         circleProgressView.startProgressAnimation();
