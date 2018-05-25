@@ -19,4 +19,6 @@
     <color name="maincolor2">#CCF1BF29</color>
     <color name="background">#ccf4f4f2</color>
     <color name="white">#f7f7f7</color>
+    <color name="gray">#CCE7E7E2</color>
+    <color name="black">#FF000000</color>
 </resources>

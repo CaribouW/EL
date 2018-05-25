@@ -72,6 +72,7 @@ dependencies {
     //    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
     compile 'com.github.codbking:PickTime:v1.0.1'
     compile project(path: ':floatwindow')
+    compile 'com.moos:Material-ProgressView:1.0.1'
 }
 repositories {
     mavenCentral()
