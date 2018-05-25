@@ -5,6 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:checkable="true"
             android:id="@+id/nav_coin"
             android:icon="@mipmap/ic_coins"
             android:title="金币"
@@ -15,23 +16,31 @@
             android:title="成就"
             android:checkable="true"/>
         <item
+            android:checkable="true"
+
             android:id="@+id/nav_greeting"
             android:icon="@mipmap/greeting"
             android:title="早晚安问候"/>
         <item
             android:id="@+id/nav_help"
+
+            android:checkable="true"
             android:icon="@mipmap/help"
-            android:title="帮助与反馈"/>
+            android:title="帮助与反馈" />
 
     </group>
 
     <item android:title="模式">
         <menu>
             <item
+                android:checkable="true"
+
                 android:id="@+id/nav_store"
                 android:icon="@mipmap/store"
                 android:title="兑换（解锁）"/>
             <item
+                android:checkable="true"
+
                 android:id="@+id/nav_setting"
                 android:icon="@mipmap/setting"
                 android:title="设置"/>
