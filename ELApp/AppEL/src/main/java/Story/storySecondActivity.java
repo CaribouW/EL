@@ -36,12 +36,27 @@ public class storySecondActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
-        Button button = (Button) findViewById(R.id.buttonStory2);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button1 = (Button) findViewById(R.id.buttonStory2);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(storySecondActivity.this, ClockActivity.class);
+//                Intent intent = new Intent(storySecondActivity.this, ClockActivity.class);
+//                startActivity(intent);
+                TextView textView = (TextView)findViewById(R.id.textViewStory2);
+                textView.setText("I' m running!");
+
+//                CircleView circleView = (CircleView)findViewById(R.id.progressView_circleStory2);
+//                circleView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        Button button2 = (Button) findViewById(R.id.buttonStory2next);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(storySecondActivity.this, storyThirdActivity.class);
                 startActivity(intent);
+
             }
         });
     }
