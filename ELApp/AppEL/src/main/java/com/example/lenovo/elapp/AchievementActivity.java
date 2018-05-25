@@ -49,9 +49,9 @@ public class AchievementActivity extends AppCompatActivity {
 
     private void initItems(){
         for(int i=0;i<2;i++){
-            Achievement_item item_1 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_1 = new Achievement_item("master",R.drawable.achivement_3);
             itemList.add(item_1);
-            Achievement_item item_2 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_2 = new Achievement_item("master",R.drawable.achivement_noodles);
             itemList.add(item_2);
             Achievement_item item_3 = new Achievement_item("master",R.mipmap.achievement);
             itemList.add(item_3);
