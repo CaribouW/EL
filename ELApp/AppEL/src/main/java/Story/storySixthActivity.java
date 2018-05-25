@@ -24,11 +24,16 @@ public class storySixthActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
+
+        Button button1 = (Button) findViewById(R.id.buttonStory6);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(storySixthActivity.this, storySixthPlusActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
-    /**Called when the user clicks the Send button*/
-    public void sendMessage(View view){
-        Intent intent =  new Intent(this,storySixthPlusActivity.class);
-        startActivity(intent);
-    }
 }
