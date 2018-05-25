@@ -11,7 +11,7 @@
         android:id="@+id/buttonStory7"
         android:onClick="sendMessage"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"

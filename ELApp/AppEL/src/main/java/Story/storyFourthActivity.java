@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.codbking.widget.bean.DateType;
+import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 
 import Tmp_lib.myDatePickDialog;
@@ -53,7 +54,7 @@ public class storyFourthActivity extends AppCompatActivity {
 
     /**Called when the user clicks the Send button*/
     public void sendMessage(View view){
-        Intent intent =  new Intent(this,storyFifthActivity.class);
+        Intent intent =  new Intent(this,NewTaskActivity.class);
         startActivity(intent);
     }
 
