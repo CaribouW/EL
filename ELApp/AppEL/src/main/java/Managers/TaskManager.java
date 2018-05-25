@@ -2,6 +2,7 @@ package Managers;
 
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 
@@ -27,13 +28,11 @@ import java.util.List;
 public class TaskManager {
     private String tasksPath;
     private List<Task> taskList;
-    private MusicManager music_manager;
     private FileManager file_manager;
     private Achievement achievement;
 
     private TaskManager(Context context) {
         taskList = new LinkedList<>();
-        music_manager = MusicManager.getMusicManager();
         file_manager = FileManager.getFileManager();
         achievement = Achievement.getAchievement(context);
         tasksPath = file_manager.getAppPath(context) + "tasks.txt";
@@ -81,39 +80,59 @@ public class TaskManager {
 
     public void TaskReady(Task task) {
         task.setCondition("ready");
+        task.setFailed(false);
+        task.setFinished(false);
+        addTask(task);
     }
 
     public void TaskBegin(Task task) {
         task.setCondition("begin");
-    }
-
-    public void TaskFinish(Task task) {
-        task.setCondition("finish");
-    }
-
-    public boolean IsReady(Task task) {
-        return task.getCondition().equals("ready");
-    }
-
-    public boolean IsBegin(Task task) {
-        return task.getCondition().equals("begin");
-    }
-
-    public boolean IsFinish(Task task) {
-        return task.getCondition().equals("finish");
+        task.setFailed(false);
+        task.setFinished(false);
     }
 
     public void TaskSuccess(Task task) {
-        task.setAccession("succeeded");
-        addTask(task);
+        task.setCondition("success");
+        task.setFinished(true);
+        task.setFailed(false);
+        int coin = Integer.parseInt(achievement.getCoin());
+        achievement.setCoin(String.valueOf(coin + 100));
     }
 
     public void TaskFail(Task task) {
+        task.setCondition("fail");
+        task.setFinished(true);
+        task.setFailed(true);
+        int coin = Integer.parseInt(achievement.getCoin());
+        achievement.setCoin(String.valueOf(coin - 100));
+    }
 
-        synchronized (this) {
-            task.setAccession("failed");
-            addTask(task);
+    // 0: ready  1:success 2:fail
+    public int[] getRatio() {
+        int[] result = {0, 0, 0};
+        List<Task> list = getTaskList();
+        for (Task task : list) {
+            String condition = task.getCondition();
+            if (condition.equals("ready"))
+                result[0]++;
+            else if (condition.equals("success"))
+                result[1]++;
+            else if (condition.equals("fail"))
+                result[2]++;
         }
+        return result;
+    }
+
+    public List<Task> getReadyTaskList() {
+        return TaskFilter("ready");
+    }
+
+    public List<Task> getFailedTaskList() {
+        return TaskFilter("fail");
+    }
+
+    public List<Task> getSuccessTaskList() {
+        return TaskFilter("success");
     }
 
     private List<Task> flushTask() throws IOException {
@@ -138,6 +157,17 @@ public class TaskManager {
 
     private File getBuffFile() {
         return new File(this.tasksPath);
+    }
+
+    @NonNull
+    private List<Task> TaskFilter(String str) {
+        List<Task> list = getTaskList();
+        List<Task> result = new LinkedList<>();
+        for (Task task : list) {
+            if (task.getCondition().equals(str))
+                result.add(task);
+        }
+        return result;
     }
 
     private void writeObjFile(List<Task> jsonArray) throws IOException {

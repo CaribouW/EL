@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        layout="@layout/circle_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.moos.library.CircleProgressView
+        android:id="@+id/progressView_circle"
+        android:layout_width="298dp"
+        android:layout_height="323dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        app:circleBroken="true"
+        app:end_color="@color/black"
+        app:end_progress="60"
+        app:isTracked="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453"
+        app:start_color="@color/maincolor"
+        app:start_progress="0"
+        app:track_width="50dp" />
+
+    <cn.iwgang.countdownview.CountdownView
+        android:id="@+id/countingDown"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:isHideTimeBackground="true"
+        app:isShowDay="true"
+        app:isShowHour="true"
+        app:isShowMillisecond="true"
+        app:isShowMinute="true"
+        app:isShowSecond="true"
+        app:isTimeTextBold="true"
+        app:timeBgBorderColor="@color/black"
+        app:isShowTimeBgBorder="true"
+        app:timeBgBorderSize="@dimen/margin_5"
+        app:timeBgBorderRadius="@dimen/margin_5"
+        app:layout_constraintBottom_toBottomOf="@+id/progressView_circle"
+        app:layout_constraintEnd_toEndOf="@+id/progressView_circle"
+        app:layout_constraintStart_toStartOf="@+id/progressView_circle"
+        app:layout_constraintTop_toTopOf="@+id/progressView_circle"
+        app:suffixGravity="bottom"
+        app:suffixHour="时"
+        app:suffixMillisecond="毫秒"
+        app:suffixMinute="分"
+        app:suffixSecond="秒"
+        app:suffixTextColor="@color/maincolor"
+        app:suffixTextSize="12sp"
+        app:timeTextColor="@color/maincolor"
+        app:timeTextSize="22sp" />
+
+
+</android.support.constraint.ConstraintLayout>

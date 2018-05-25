@@ -11,7 +11,7 @@
         android:layout_height="40dp"
         android:background="@drawable/redbutton"
         android:button="@null"
-        android:layout_marginStart="60dp"/>
+        android:layout_marginStart="60dp" />
 
     <CheckBox
         android:id="@+id/orangeCheckbox"
@@ -20,7 +20,7 @@
         android:background="@drawable/orangebutton"
         android:button="@null"
         android:layout_toRightOf="@id/redCheckbox"
-        android:layout_marginLeft="36dp"/>
+        android:layout_marginLeft="36dp" />
 
     <CheckBox
         android:id="@+id/pinkCheckbox"
@@ -29,7 +29,7 @@
         android:layout_marginLeft="36dp"
         android:background="@drawable/pinkbutton"
         android:button="@null"
-        android:layout_toRightOf="@id/orangeCheckbox"/>
+        android:layout_toRightOf="@id/orangeCheckbox" />
 
     <CheckBox
         android:id="@+id/blueCheckbox"

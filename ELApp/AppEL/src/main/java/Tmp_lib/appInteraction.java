@@ -17,6 +17,8 @@ import android.text.TextUtils;
  *           2.packageName : it's just the package name of the app you want to start(type: string)
  *                        for example: "com.gotokeep.keep" (Keep)
  *                                     "com.shanbay.words" (扇贝单词）
+ *                                     "com.tencent.tim" (Tim)
+ *                                     "com.sina.weibo" (新浪微博）
  *                                     “com.android.chrome” （Chrome Browser）
  *                                     “com.google.android.apps.maps” （Google Map）
  *
@@ -26,9 +28,12 @@ import android.text.TextUtils;
  */
 
 public class appInteraction {
-    final String keep = "http://gotokeep.com/";
-    final String Scallop_word = "https://www.shanbay.com/";
-    String website;
+
+    private final String keep = "http://gotokeep.com/";
+    private final String Scallop_word = "https://www.shanbay.com/";
+    private final String weibo = "https://c.weibo.cn/client/guide/wap";
+    private final String tim = "https://tim.qq.com/";
+    private String website;
 
     private static boolean isApkInstalled(Context context, String packageName) {
         if (TextUtils.isEmpty(packageName)) {

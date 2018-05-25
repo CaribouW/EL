@@ -1,1 +1,1 @@
-include ':AppEL', ':testlfm', ':effect', ':testlfm'
+include ':AppEL', ':testlfm', ':effect', ':testlfm', ':floatwindow'

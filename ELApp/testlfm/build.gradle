@@ -67,6 +67,7 @@ dependencies {
     //    }//透明指示层
     //    compile 'me.jahirfiquitiva:FABsMenu:1.0.3'
 
+    compile project(path: ':floatwindow')
 }
 repositories {
     mavenCentral()

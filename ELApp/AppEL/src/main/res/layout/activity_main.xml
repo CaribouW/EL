@@ -29,23 +29,7 @@
             app:menu="@menu/main_bottom_navigation_content" />
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_view_left"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/left_navigation_view_header_layout"
-        app:menu="@menu/left_navigation_view_menu"
-        tools:ignore="RtlHardcoded" >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="未完成:"
-            android:textSize="40sp" />
-    </android.support.design.widget.NavigationView>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -58,51 +42,110 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-            <Button
-                android:id="@+id/titleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="今日内容"
-                android:textSize="20sp"
-                android:textColor="@color/title"/>
+            <include layout="@layout/main_title" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="1"
-                    android:text="2/5"
-                    android:textColor="@color/title"
-                    android:textSize="50sp"
-                    android:gravity="center"/>
+
+                <EditText
+                    android:layout_width="26dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:inputType="date" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="70dp"
-                    android:layout_weight="2"
-                    android:text="任务按重要性分"
-                    android:textSize="30sp"
-                    android:gravity="center"/>
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/maincolor"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:text="/"
+                    android:textColor="@color/maincolor"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:layout_width="44dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="@color/maincolor"
+                    android:textSize="50sp" />
+
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="1dp"
                 android:layout_weight="1"
-                android:text="已完成:"
-                android:textSize="40sp"/>
+                android:background="@color/white"
+                android:text="未完成"
+                android:textColor="@color/maincolor"
+                android:textSize="32sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="2.5"
+                android:background="@color/background"
+                android:textColor="@color/maincolor"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:text="已完成"
+                android:textColor="@color/maincolor"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:background="@color/background"
+                android:textColor="@color/maincolor"
+                android:textSize="32sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="0.5"
+
+                android:textSize="32sp" />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/left_navigation_view_header_layout"
+        app:menu="@menu/left_navigation_view_menu"
+        tools:ignore="RtlHardcoded">
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
 

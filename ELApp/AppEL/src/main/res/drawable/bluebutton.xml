@@ -18,7 +18,7 @@
     </item>
     <item
         android:state_checked="false"
-        android:drawable="@drawable/bluebutton2">
+        android:drawable="@drawable/bluebutton1">
 
     </item>
 </selector>

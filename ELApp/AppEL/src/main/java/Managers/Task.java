@@ -15,29 +15,36 @@ public class Task {
     private Timer timer;
     private String taskName;
     private String remarks;
-    private String importance;
-    private String beginTime;
-    private String duration;
+    private String importance;  //red orange pink blue.
+    private String beginTime;   //day-hour-minute-second
+    private String duration;    //
     private String endTime;
-    private String frequency;
-    private String condition;
-    private String Accession;
+    private String[] Repetition;
+    private boolean IsFailed;
+    private boolean IsFinished;
+    private String AnotherApp;
+    private String Condition;
+    private String RingTime;   //hour-minute-second
 
     private Task() {
         timer = new Timer();
         taskName = "None";
+        Condition = "None";
         remarks = "None";
         importance = "None";
         beginTime = "None";
         endTime = "None";
-        frequency = "None";
-        condition = "None";
-        Accession = "None";
+        AnotherApp = "None";
+        RingTime = "None";
+        IsFailed = false;
+        IsFinished = false;
+
     }
 
     public static Task getTask() {
         return new Task();
     }
+
 
     public String getTaskName() {
         return taskName;
@@ -87,39 +94,51 @@ public class Task {
         this.endTime = endTime;
     }
 
-    public String getFrequency() {
-        return frequency;
+    public String[] getRepetition() {
+        return Repetition;
     }
 
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
+    public void setRepetition(String[] repetition) {
+        Repetition = repetition;
+    }
+
+    public boolean isFailed() {
+        return IsFailed;
+    }
+
+    public void setFailed(boolean failed) {
+        IsFailed = failed;
+    }
+
+    public boolean isFinished() {
+        return IsFinished;
+    }
+
+    public void setFinished(boolean finished) {
+        IsFinished = finished;
+    }
+
+    public String getAnotherApp() {
+        return AnotherApp;
+    }
+
+    public void setAnotherApp(String anotherApp) {
+        AnotherApp = anotherApp;
+    }
+
+    public String getRingTime() {
+        return RingTime;
+    }
+
+    public void setRingTime(String ringTime) {
+        RingTime = ringTime;
     }
 
     public String getCondition() {
-        return condition;
+        return Condition;
     }
 
     public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public boolean IsReady() {
-        return condition.equals("ready");
-    }
-
-    public boolean IsBegin() {
-        return condition.equals("begin");
-    }
-
-    public boolean IsFinish() {
-        return condition.equals("finish");
-    }
-
-    public String getAccession() {
-        return Accession;
-    }
-
-    public void setAccession(String accession) {
-        Accession = accession;
+        Condition = condition;
     }
 }
