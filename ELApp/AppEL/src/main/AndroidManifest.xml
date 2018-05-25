@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/icon_of_hxh"
+        android:icon="@drawable/orange"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/icon_of_hxh"
+        android:roundIcon="@drawable/orange"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -38,6 +38,7 @@
         <activity android:name="Story.storySixthActivity" />
         <activity android:name="Story.storySeventhActivity" />
         <activity android:name="Story.storySecondActivity" />
+        <activity android:name="Story.storySixthPlusActivity"/>
 
         <activity android:name="BackUps.GoodEvening" />
         <activity android:name="BackUps.GoodMorning" />

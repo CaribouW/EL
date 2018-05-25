@@ -1,6 +1,5 @@
 package Activitys;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -9,8 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -28,11 +25,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
+<<<<<<< HEAD
 
 
 import com.example.lenovo.elapp.ClockActivity;
 
 
+=======
+import com.example.lenovo.elapp.CalendarActivity;
+import com.example.lenovo.elapp.ClockActivity;
+>>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
@@ -44,22 +46,50 @@ import java.util.List;
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+<<<<<<< HEAD
+import Managers.Achievement;
+=======
+>>>>>>> 203f900fac045cd048a6787fcdbfaff7946ebf03
+import Managers.CoinManager;
+import Managers.FileManager;
 import Managers.ImageManager;
+<<<<<<< HEAD
 import Managers.Task;
+=======
+import Managers.TimeManager;
+>>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
 import Tmp_lib.appInteraction;
 
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< HEAD
+=======
+    LinearLayout linearLayout;
+    CoinManager coinManager;
+>>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 
     private ImageManager imageManager = ImageManager.getImageManager();
+    private CoinManager coinManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        coinManager = CoinManager.getCoinManager(MainActivity.this);
+        TimeManager timeManager = TimeManager.getTimeManager();
+        TextView textView = (TextView) findViewById(R.id.main_month);
+        textView.setText(timeManager.getMonth());
+        TextView textView2 = (TextView) findViewById(R.id.main_day);
+        textView2.setText(timeManager.getDayOfMonth());
+        TextView textView3 = (TextView) findViewById(R.id.main_year);
+        textView3.setText(timeManager.getYear());
 
+
+        if (!FileManager.IsPermitted(this)) {
+            FileManager.requestPermissions(this);
+        }
         BottomNavigationTask();
         NavigationViewTask();
         ActionBar actionBar = getSupportActionBar();
@@ -67,14 +97,39 @@ public class MainActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
+        Button button1 = (Button) findViewById(R.id.main_title);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button button = (Button) findViewById(R.id.main_return);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 Intent intent = new Intent(MainActivity.this,ClockActivity.class);
+=======
+                /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
+                //设置上下年分限制
+                dialog.setYearLimt(5);
+                //设置标题
+                dialog.setTitle("选择时间");
+                //设置类型
+                dialog.setType(DateType.TYPE_HM);
+                //设置消息体的显示格式，日期格式
+                dialog.setMessageFormat("yyyy-MM-dd HH:mm");
+                //设置选择回调
+                dialog.setOnChangeLisener(null);
+                //设置点击确定按钮回调
+                dialog.setOnSureLisener(null);
+                dialog.show();*/
+                Intent intent = new Intent(MainActivity.this, ClockActivity.class);
+>>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
                 startActivity(intent);
-
             }
         });
         ImageView imageView = new ImageView(getApplicationContext());
@@ -183,7 +238,15 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
-        slideshow.setText("1");
+<<<<<<< HEAD
+        //slideshow.setText("1");
+//       coinManager=CoinManager.getCoinManager(this);
+//        coinManager.setCoin("100");
+//        slideshow.setText(coinManager.getCoin());
+=======
+        coinManager.setCoin("100");
+        slideshow.setText(String.valueOf(coinManager.getCoin()));
+>>>>>>> 203f900fac045cd048a6787fcdbfaff7946ebf03
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -248,15 +311,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean IsPermitted() {
-        return ContextCompat.checkSelfPermission(MainActivity.this
-                , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(MainActivity.this
-                , new String[]{
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                }, 1);
-    }
 }

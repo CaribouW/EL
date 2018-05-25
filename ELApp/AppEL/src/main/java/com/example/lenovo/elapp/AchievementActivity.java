@@ -41,37 +41,36 @@ public class AchievementActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AchievementActivity.this, MainActivity.class);
-                startActivity(intent);
+            finish();
             }
         });
     }
 
     private void initItems(){
         for(int i=0;i<2;i++){
-            Achievement_item item_1 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_1 = new Achievement_item("while(1)",R.mipmap.while1);
             itemList.add(item_1);
-            Achievement_item item_2 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_2 = new Achievement_item("de一个小小的bug",R.mipmap.debug);
             itemList.add(item_2);
-            Achievement_item item_3 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_3 = new Achievement_item("来一杯JAVA咖啡",R.mipmap.coffee);
             itemList.add(item_3);
-            Achievement_item item_4 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_4 = new Achievement_item("满江红",R.mipmap.all_red);
             itemList.add(item_4);
-            Achievement_item item_5 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_5 = new Achievement_item("3秒真男人",R.mipmap.three);
             itemList.add(item_5);
-            Achievement_item item_6 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_6 = new Achievement_item("'WA'王",R.mipmap.error_2);
             itemList.add(item_6);
-            Achievement_item item_7 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_7 = new Achievement_item("快银",R.mipmap.times_kuai);
             itemList.add(item_7);
-            Achievement_item item_8 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_8 = new Achievement_item("ddl救我狗命",R.mipmap.ddl_1);
             itemList.add(item_8);
-            Achievement_item item_9 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_9 = new Achievement_item("ddl就是力量",R.mipmap.ddl_10);
             itemList.add(item_9);
-            Achievement_item item_10 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_10 = new Achievement_item("第一桶金",R.mipmap.ic_coins);
             itemList.add(item_10);
-            Achievement_item item_11 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_11 = new Achievement_item("千金难买",R.mipmap.coin_1000);
             itemList.add(item_11);
-            Achievement_item item_12 = new Achievement_item("master",R.mipmap.achievement);
+            Achievement_item item_12 = new Achievement_item("万元户",R.mipmap.coin_10000);
             itemList.add(item_12);
         }
     }

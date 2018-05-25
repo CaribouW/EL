@@ -18,8 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="早安提醒"
-        android:textColor="@color/orange"
-        android:track="@drawable/ic_new_task_monday"
+        android:textColor="@color/maincolor"
         android:textOff="关闭"
         android:textOn="打开"
         android:theme="@style/mySwitch"
@@ -31,7 +30,18 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text=" " />
+
+    <EditText
+        android:id="@+id/edit_morning"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="输入时间 小时-分钟"
+        android:gravity="center"
+        android:padding="5dp"
+        android:inputType=""
+        android:textColor="@color/maincolor"
+        android:background="@drawable/new_task_edittext"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -45,19 +55,29 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="晚安提醒"
-        android:textColor="@color/orange"
-        android:track="@drawable/ic_new_task_monday"
+        android:textColor="@color/maincolor"
         android:textOff="关闭"
         android:textOn="打开"
         android:theme="@style/mySwitch"
         android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editTaskName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="输入时间 小时-分钟"
+        android:gravity="center"
+        android:padding="5dp"
+        android:inputType=""
+        android:textColor="@color/maincolor"
+        android:background="@drawable/new_task_edittext"/>
 
     <TextView
         android:id="@+id/text1"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text=" " />
 
 
 </LinearLayout>

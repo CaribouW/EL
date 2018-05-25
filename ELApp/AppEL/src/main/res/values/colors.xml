@@ -19,6 +19,11 @@
     <color name="maincolor2">#CCF1BF29</color>
     <color name="background">#ccf4f4f2</color>
     <color name="white">#f7f7f7</color>
+<<<<<<< HEAD
     <color name="lightCyan">#ede0ec</color>
     <color name="gray">#525152</color>
+=======
+    <color name="gray">#CCE7E7E2</color>
+    <color name="black">#FF000000</color>
+>>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 </resources>

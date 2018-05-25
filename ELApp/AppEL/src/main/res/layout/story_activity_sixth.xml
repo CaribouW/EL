@@ -5,33 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/e"
-    tools:context="Story.storyFourthActivity">
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:onClick="sendMessage"
-        android:text="Go Next!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+    tools:context="Story.storyFourthActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
         android:id="@+id/buttonStory6"
         android:layout_width="129dp"
-        android:layout_height="92dp"
+        android:layout_height="94dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="208dp"
+
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewStory6one"
+        android:layout_width="181dp"
+        android:layout_height="190dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        android:gravity="center"
+        android:text="保持专注\n专注\n再专注！"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStory6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewStory6two"
+        android:layout_width="264dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="你会到达终点的！"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStory6"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonStory6"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+        <!--android:onClick="sendMessage"-->
+        <!--android:text="Go Next!"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--tools:layout_editor_absoluteX="0dp" />-->
 
 </android.support.constraint.ConstraintLayout>
