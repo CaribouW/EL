@@ -25,8 +25,10 @@ public class FloatingPlayer {
     private boolean IsBegin = false;
     private MusicManager musicManager = MusicManager.getMusicManager();
     private MediaPlayer mediaPlayer = musicManager.GetMediaPlayer();
+    private Context context;
 
     public void floatStart(Context context, ImageView imageView) {
+        this.context = context;
         imageView.setOnClickListener(v -> {
             if (!IsBegin) {
                 mediaPlayer = musicManager.play(context, mediaPlayer, R.raw.bgm8);
@@ -71,8 +73,12 @@ public class FloatingPlayer {
     };
 
     private ViewStateListener mViewStateListener = new ViewStateListener() {
+        MainActivity mainActivity = new MainActivity();
+
         @Override
         public void onPositionUpdate(int x, int y) {
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            MusicManager.getMusicManager().play(context, mediaPlayer, R.raw.water);
             Log.d(TAG, "onPositionUpdate: x=" + x + " y=" + y);
         }
 
@@ -99,6 +105,8 @@ public class FloatingPlayer {
         @Override
         public void onMoveAnimEnd() {
             Log.d(TAG, "onMoveAnimEnd");
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            MusicManager.getMusicManager().play(context, mediaPlayer, R.raw.eff_1);
         }
 
         @Override

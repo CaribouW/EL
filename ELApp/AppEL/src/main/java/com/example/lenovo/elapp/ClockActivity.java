@@ -45,7 +45,7 @@ public class ClockActivity extends AppCompatActivity {
             duration = Long.parseLong(task.getDuration());
         } else {
             Task task = Task.getTask();
-            duration = 10;
+            duration = 2 * 60;
         }
         MusicManager musicManager = MusicManager.getMusicManager();
         MediaPlayer mediaPlayer = musicManager.GetMediaPlayer();
@@ -59,6 +59,7 @@ public class ClockActivity extends AppCompatActivity {
         circleBrn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
             }
         });

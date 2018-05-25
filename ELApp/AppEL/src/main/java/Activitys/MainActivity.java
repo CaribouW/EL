@@ -147,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
         coinManager.setCoin("100");
         slideshow.setText(String.valueOf(coinManager.getCoin()));
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
