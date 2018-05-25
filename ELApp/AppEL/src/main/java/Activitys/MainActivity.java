@@ -25,6 +25,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
+
+
+import com.example.lenovo.elapp.ClockActivity;
+
+import com.example.lenovo.elapp.CalendarActivity;
+
+
 import com.example.lenovo.elapp.CalendarActivity;
 import com.example.lenovo.elapp.CircleView;
 import com.example.lenovo.elapp.ClockActivity;
