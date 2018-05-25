@@ -73,11 +73,10 @@ public class FloatingPlayer {
     };
 
     private ViewStateListener mViewStateListener = new ViewStateListener() {
-        MainActivity mainActivity = new MainActivity();
+        MediaPlayer mediaPlayer = new MediaPlayer();
 
         @Override
         public void onPositionUpdate(int x, int y) {
-            MediaPlayer mediaPlayer = new MediaPlayer();
             MusicManager.getMusicManager().play(context, mediaPlayer, R.raw.water);
             Log.d(TAG, "onPositionUpdate: x=" + x + " y=" + y);
         }
@@ -105,7 +104,7 @@ public class FloatingPlayer {
         @Override
         public void onMoveAnimEnd() {
             Log.d(TAG, "onMoveAnimEnd");
-            MediaPlayer mediaPlayer = new MediaPlayer();
+            mediaPlayer = musicManager.pause(mediaPlayer);
             MusicManager.getMusicManager().play(context, mediaPlayer, R.raw.eff_1);
         }
 
