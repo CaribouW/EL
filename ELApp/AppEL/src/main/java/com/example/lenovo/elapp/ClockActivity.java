@@ -30,6 +30,8 @@ public class ClockActivity extends AppCompatActivity {
     private MusicManager musicManager = MusicManager.getMusicManager();
     private MediaPlayer mediaPlayer = musicManager.GetMediaPlayer();
     private TaskManager taskManager;
+    private long duration = 10;
+    private Task task;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -38,8 +40,13 @@ public class ClockActivity extends AppCompatActivity {
         setContentView(R.layout.circle);
         taskManager = TaskManager.getTaskManager(this);
         Bundle bundle = getIntent().getExtras();
-        Task task = findTask(taskManager, (String) bundle.get("task"));
-        long duration = Long.parseLong(task.getDuration());
+        if (bundle != null) {
+            Task task = findTask(taskManager, (String) bundle.get("task"));
+            duration = Long.parseLong(task.getDuration());
+        } else {
+            Task task = Task.getTask();
+            duration = 10;
+        }
         MusicManager musicManager = MusicManager.getMusicManager();
         MediaPlayer mediaPlayer = musicManager.GetMediaPlayer();
         WinJudgement winJudgement = WinJudgement.getWinJudgement(ClockActivity.this, mediaPlayer
@@ -64,7 +71,7 @@ public class ClockActivity extends AppCompatActivity {
         winJudgement.setTask(task);
         winJudgement.setCountdownView(countdownView);
 //        winJudgement.setMusicPathList(this, "mp3", "Music/");
-        winJudgement.JudgementStart(this);
+        task = winJudgement.JudgementStart(this);
     }
 
     private Task findTask(TaskManager taskManager, String task) {
