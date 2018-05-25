@@ -25,15 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
-
-
-import com.example.lenovo.elapp.ClockActivity;
-
-import com.example.lenovo.elapp.CalendarActivity;
-
-
-import com.example.lenovo.elapp.CalendarActivity;
-import com.example.lenovo.elapp.CircleView;
 import com.example.lenovo.elapp.ClockActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
@@ -43,6 +34,7 @@ import com.example.lenovo.elapp.RemindActivity;
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+import Managers.FileManager;
 import Managers.ImageManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
@@ -57,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (!FileManager.IsPermitted(this)) {
+            FileManager.requestPermissions(this);
+        }
         BottomNavigationTask();
         NavigationViewTask();
         ActionBar actionBar = getSupportActionBar();
@@ -83,9 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
                 dialog.show();*/
-                Intent intent = new Intent(MainActivity.this,ClockActivity.class);
+                Intent intent = new Intent(MainActivity.this, ClockActivity.class);
                 startActivity(intent);
-
             }
         });
         ImageView imageView = new ImageView(getApplicationContext());
@@ -198,15 +192,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean IsPermitted() {
-        return ContextCompat.checkSelfPermission(MainActivity.this
-                , Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(MainActivity.this
-                , new String[]{
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                }, 1);
-    }
 }
