@@ -24,14 +24,15 @@ public class TaskPicker {
     private String tasksPath;
     private List<Task> taskList;
     private FileManager file_manager;
-    private Achievement achievement;
     private TimeManager timeManager;
+    private CoinManager coinManager;
 
     private TaskPicker(Context context, DatePicker datePicker) {
         this.file_manager = FileManager.getFileManager();
         this.datePicker = datePicker;
         this.datOfMonth = String.valueOf(datePicker.getDayOfMonth());
         this.tasksPath = file_manager.getAppPath(context) + "tasks" + this.datOfMonth + ".txt";
+        this.coinManager = CoinManager.getCoinManager(context);
     }
 
     private TaskPicker() {
@@ -41,7 +42,7 @@ public class TaskPicker {
     }
 
     public static TaskPicker getTaskPicker(Context context, DatePicker datePicker) {
-        TimePicker timePicker=new TimePicker(context);
+        TimePicker timePicker = new TimePicker(context);
         return new TaskPicker(context, datePicker);
     }
 
@@ -102,16 +103,16 @@ public class TaskPicker {
         task.setCondition("success");
         task.setFinished(true);
         task.setFailed(false);
-        int coin = Integer.parseInt(achievement.getCoin());
-        achievement.setCoin(String.valueOf(coin + 100));
+        int coinCount = coinManager.getCoin();
+        coinManager.setCoin(String.valueOf(coinCount + 100));
     }
 
     public void TaskFail(Task task) {
         task.setCondition("fail");
         task.setFinished(true);
         task.setFailed(true);
-        int coin = Integer.parseInt(achievement.getCoin());
-        achievement.setCoin(String.valueOf(coin - 100));
+        int coinCount = coinManager.getCoin();
+        coinManager.setCoin(String.valueOf(coinCount - 100));
     }
 
     // 0: ready  1:success 2:fail
