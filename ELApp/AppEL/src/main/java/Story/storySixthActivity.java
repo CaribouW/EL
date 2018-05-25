@@ -24,16 +24,6 @@ public class storySixthActivity extends AppCompatActivity {
         if(actionBar!=null){
             actionBar.hide();
         }
-
-//        Button button = (Button)findViewById(R.id.buttonStory6plus);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                此处增加一个浮动窗口
-//                Intent intent =  new Intent(storySixthActivity.this, storySixthPlusActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     /**Called when the user clicks the Send button*/
