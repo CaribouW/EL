@@ -29,13 +29,13 @@ public class TaskManager {
     private String tasksPath;
     private List<Task> taskList;
     private FileManager file_manager;
-    private Achievement achievement;
+    private CoinManager coinManager;
 
     private TaskManager(Context context) {
         taskList = new LinkedList<>();
         file_manager = FileManager.getFileManager();
-        achievement = Achievement.getAchievement(context);
         tasksPath = file_manager.getAppPath(context) + "tasks.txt";
+        coinManager = CoinManager.getCoinManager(context);
     }
 
     public static TaskManager getTaskManager(Context context) {
@@ -95,16 +95,16 @@ public class TaskManager {
         task.setCondition("success");
         task.setFinished(true);
         task.setFailed(false);
-        int coin = Integer.parseInt(achievement.getCoin());
-        achievement.setCoin(String.valueOf(coin + 100));
+        int coin = coinManager.getCoin();
+        coinManager.setCoin(String.valueOf(coin + 100));
     }
 
     public void TaskFail(Task task) {
         task.setCondition("fail");
         task.setFinished(true);
         task.setFailed(true);
-        int coin = Integer.parseInt(achievement.getCoin());
-        achievement.setCoin(String.valueOf(coin - 100));
+        int coin = coinManager.getCoin();
+        coinManager.setCoin(String.valueOf(coin - 100));
     }
 
     // 0: ready  1:success 2:fail

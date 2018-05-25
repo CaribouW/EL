@@ -1,6 +1,5 @@
 package Activitys;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -9,8 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,19 +28,20 @@ import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
-import com.moos.library.CircleProgressView;
 
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+<<<<<<< HEAD
 import Managers.Achievement;
+=======
+>>>>>>> 203f900fac045cd048a6787fcdbfaff7946ebf03
 import Managers.CoinManager;
 import Managers.FileManager;
 import Managers.ImageManager;
 import Managers.TimeManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
-import cn.iwgang.countdownview.CountdownView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,19 +49,20 @@ public class MainActivity extends AppCompatActivity {
     CoinManager coinManager;
 
     private ImageManager imageManager = ImageManager.getImageManager();
+    private CoinManager coinManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TimeManager timeManager=TimeManager.getTimeManager();
-        TextView textView = (TextView)findViewById(R.id.main_month);
+        coinManager = CoinManager.getCoinManager(MainActivity.this);
+        TimeManager timeManager = TimeManager.getTimeManager();
+        TextView textView = (TextView) findViewById(R.id.main_month);
         textView.setText(timeManager.getMonth());
-        TextView textView2 = (TextView)findViewById(R.id.main_day);
+        TextView textView2 = (TextView) findViewById(R.id.main_day);
         textView2.setText(timeManager.getDayOfMonth());
-        TextView textView3 = (TextView)findViewById(R.id.main_year);
+        TextView textView3 = (TextView) findViewById(R.id.main_year);
         textView3.setText(timeManager.getYear());
-
 
 
         if (!FileManager.IsPermitted(this)) {
@@ -152,10 +151,15 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
+<<<<<<< HEAD
         //slideshow.setText("1");
 //       coinManager=CoinManager.getCoinManager(this);
 //        coinManager.setCoin("100");
 //        slideshow.setText(coinManager.getCoin());
+=======
+        coinManager.setCoin("100");
+        slideshow.setText(String.valueOf(coinManager.getCoin()));
+>>>>>>> 203f900fac045cd048a6787fcdbfaff7946ebf03
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
