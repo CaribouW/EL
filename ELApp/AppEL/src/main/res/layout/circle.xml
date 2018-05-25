@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <include
+        layout="@layout/circle_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <com.moos.library.CircleProgressView
         android:id="@+id/progressView_circle"
         android:layout_width="298dp"
@@ -23,7 +29,7 @@
         app:layout_constraintVertical_bias="0.453"
         app:start_color="@color/maincolor"
         app:start_progress="0"
-        app:track_width="33dp" />
+        app:track_width="50dp" />
 
     <cn.iwgang.countdownview.CountdownView
         android:id="@+id/countingDown"
@@ -40,6 +46,10 @@
         app:isShowMinute="true"
         app:isShowSecond="true"
         app:isTimeTextBold="true"
+        app:timeBgBorderColor="@color/black"
+        app:isShowTimeBgBorder="true"
+        app:timeBgBorderSize="@dimen/margin_5"
+        app:timeBgBorderRadius="@dimen/margin_5"
         app:layout_constraintBottom_toBottomOf="@+id/progressView_circle"
         app:layout_constraintEnd_toEndOf="@+id/progressView_circle"
         app:layout_constraintStart_toStartOf="@+id/progressView_circle"
