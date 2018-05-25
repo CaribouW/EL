@@ -24,7 +24,7 @@ public class CountingDown {
         return activity.findViewById(R_id);
     }
 
-    public CountdownView start(int seconds, CountdownView countdownView) {
+    public CountdownView start(long seconds, CountdownView countdownView) {
         countdownView.start(seconds * 1000);
         return countdownView;
     }

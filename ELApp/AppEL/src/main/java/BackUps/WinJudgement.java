@@ -4,13 +4,15 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.widget.Toast;
 
+import com.example.lenovo.elapp.R;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicReference;
 
 import Managers.Achievement;
@@ -39,6 +41,11 @@ public class WinJudgement {
     private volatile boolean IsFailed = false;
     private volatile Class<? extends TaskFailed> FailedClass;
     private volatile CountdownView countdownView;
+    private int bgm8 = R.raw.bgm8;
+    private int bgm10 = R.raw.bgm10;
+    private int bgm11 = R.raw.bgm11;
+    private int bgm12 = R.raw.bgm12;
+
 
     private WinJudgement(Context context, MediaPlayer mediaPlayer, int MaxDelay) {
         synchronized (this) {
@@ -81,7 +88,7 @@ public class WinJudgement {
                 musicManager.pause(mediaPlayer);
                 IsPause = true;
             });
-            PlayInArray();
+            PlayInArray(context);
             ScreenListenerPart(context, FailedClass);
         } catch (Exception e) {
             return this.task;
@@ -89,22 +96,42 @@ public class WinJudgement {
         return this.task;
     }
 
-    private synchronized void PlayInArray() {
-
-        mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, musicPathList.get(0));
-        AtomicReference<ListIterator<String>> iterator = new AtomicReference<>(musicPathList.listIterator());
-        iterator.get().next();
+    private void PlayInArray(Context context) {
+        List<Integer> listSong = new LinkedList<>();
+        listSong.add(bgm8);
+        listSong.add(bgm10);
+        listSong.add(bgm11);
+        listSong.add(bgm12);
+        AtomicReference<Iterator<Integer>> integerIterator = new AtomicReference<>(listSong.iterator());
+        integerIterator.get().next();
+        mediaPlayer = musicManager.play(context, mediaPlayer, bgm8);
         mediaPlayer.setOnCompletionListener(mp -> {
             if (!IsFailed && !IsCountingEnd) {
-                if (!iterator.get().hasNext()) {
-                    iterator.set(musicPathList.listIterator());
+                if (!integerIterator.get().hasNext()) {
+                    integerIterator.set(listSong.iterator());
                 }
-                mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, iterator.get().next());
+                mediaPlayer = musicManager.play(context, mediaPlayer, integerIterator.get().next());
                 this.IsPause = false;
             }
         });
-
     }
+
+//    private synchronized void PlayInArray() {
+//
+//        mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, musicPathList.get(0));
+//        AtomicReference<ListIterator<String>> iterator = new AtomicReference<>(musicPathList.listIterator());
+//        iterator.get().next();
+//        mediaPlayer.setOnCompletionListener(mp -> {
+//            if (!IsFailed && !IsCountingEnd) {
+//                if (!iterator.get().hasNext()) {
+//                    iterator.set(musicPathList.listIterator());
+//                }
+//                mediaPlayer = musicManager.playExternalAbsolutePath(mediaPlayer, iterator.get().next());
+//                this.IsPause = false;
+//            }
+//        });
+//
+//    }
 
     private synchronized void CountingUpStart(Context context, Class<?> cls) {
         new Thread(() -> clockManager.setDelay(context, cls, MaxDelay, 0)).start();

@@ -3,6 +3,7 @@ package Managers;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import com.alibaba.fastjson.JSON;
 
@@ -40,6 +41,7 @@ public class TaskPicker {
     }
 
     public static TaskPicker getTaskPicker(Context context, DatePicker datePicker) {
+        TimePicker timePicker=new TimePicker(context);
         return new TaskPicker(context, datePicker);
     }
 
