@@ -46,20 +46,16 @@
             android:orientation="horizontal">
 
 
-<<<<<<< HEAD
             <EditText
-                android:layout_width="26dp"
-=======
+                android:layout_width="26dp"></EditText>
             <LinearLayout
                 android:id="@+id/main_date"
                 android:layout_width="match_parent"
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:ems="10"
                 android:inputType="date" />
 
-<<<<<<< HEAD
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
@@ -86,7 +82,6 @@
                 android:text="5"
                 android:textColor="@color/maincolor"
                 android:textSize="50sp" />
-=======
                 <TextView
                     android:id="@+id/main_month"
                     android:layout_width="53dp"
@@ -114,7 +109,6 @@
                     android:gravity="center"
                     android:textColor="@color/maincolor"
                     android:textSize="50sp" />
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 
         </LinearLayout>
         <LinearLayout
@@ -134,7 +128,6 @@
                     android:textColor="@color/maincolor"
                     android:textSize="32sp" />
 
-<<<<<<< HEAD
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -144,7 +137,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-=======
                 <TextView
                     android:layout_width="44dp"
                     android:id="@+id/main-year"
@@ -153,7 +145,6 @@
                     android:gravity="center"
                     android:textColor="@color/maincolor"
                     android:textSize="50sp" />
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 
                     </LinearLayout>
 

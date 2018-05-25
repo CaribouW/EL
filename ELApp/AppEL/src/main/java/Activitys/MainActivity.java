@@ -25,16 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
-<<<<<<< HEAD
 
 
 import com.example.lenovo.elapp.ClockActivity;
 
-
-=======
 import com.example.lenovo.elapp.CalendarActivity;
-import com.example.lenovo.elapp.ClockActivity;
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
@@ -46,32 +41,21 @@ import java.util.List;
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
-<<<<<<< HEAD
-import Managers.Achievement;
-=======
->>>>>>> 203f900fac045cd048a6787fcdbfaff7946ebf03
 import Managers.CoinManager;
 import Managers.FileManager;
 import Managers.ImageManager;
-<<<<<<< HEAD
 import Managers.Task;
-=======
 import Managers.TimeManager;
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
 import Tmp_lib.appInteraction;
 
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-=======
     LinearLayout linearLayout;
     CoinManager coinManager;
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
 
     private ImageManager imageManager = ImageManager.getImageManager();
-    private CoinManager coinManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +94,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                Intent intent = new Intent(MainActivity.this,ClockActivity.class);
-=======
+                Intent intent = new Intent(MainActivity.this, ClockActivity.class);
                 /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
                 //设置上下年分限制
                 dialog.setYearLimt(5);
@@ -127,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
                 dialog.show();*/
-                Intent intent = new Intent(MainActivity.this, ClockActivity.class);
->>>>>>> 704a1f20264ba8c67d2151f506b2182919629cbc
                 startActivity(intent);
             }
         });
@@ -136,17 +116,14 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(R.drawable.floatingbutton);
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
 
-        
-
-
 
     }
 
-    public void setSingleTask(Task task){
+    public void setSingleTask(Task task) {
 
-        if(task.getCondition()=="ready"){
+        if (task.getCondition() == "ready") {
             //在指定位置新建一个容器
-            LinearLayout linearLayout1 = (LinearLayout)findViewById(R.id.readyPart);
+            LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.readyPart);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             LinearLayout new_ll = new LinearLayout(MainActivity.this);
@@ -157,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
             TextView textView = new TextView(MainActivity.this);
             textView.setText(task.getTaskName());
             textView.setTextSize(20);
-            new_ll.addView(textView,40,40);
-            if(task.getAnotherApp()!="None") {
+            new_ll.addView(textView, 40, 40);
+            if (task.getAnotherApp() != "None") {
                 Button button = new Button(MainActivity.this);
-                new_ll.addView(button,40,40);
+                new_ll.addView(button, 40, 40);
                 switch (task.getAnotherApp()) {
                     case "com.gotokeep.keep":
                         button.setBackgroundResource(R.drawable.keep);
@@ -168,10 +145,10 @@ public class MainActivity extends AppCompatActivity {
                     case "com.shanbay.words":
                         button.setBackgroundResource(R.drawable.scallop_word);
                         break;
-                    case "com.tencent.tim" :
+                    case "com.tencent.tim":
                         button.setBackgroundResource(R.drawable.tim);
                         break;
-                    case "com.sina.weibo" :
+                    case "com.sina.weibo":
                         button.setBackgroundResource(R.drawable.weibo);
                         break;
                 }
@@ -179,22 +156,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         appInteraction appInteraction1 = new appInteraction();
-                        appInteraction1.openApp(MainActivity.this,task.getAnotherApp());
+                        appInteraction1.openApp(MainActivity.this, task.getAnotherApp());
                     }
                 });
             }
             Button go_button = new Button(MainActivity.this);
             go_button.setBackgroundResource(R.drawable.ic_chevron_right_black_24dp);
-            new_ll.addView(go_button,40,40);
+            new_ll.addView(go_button, 40, 40);
             go_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,ClockActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ClockActivity.class);
                     startActivity(intent);
                 }
             });
-        }else if(task.getCondition()=="success"){
-            LinearLayout linearLayout2 = (LinearLayout)findViewById(R.id.succeededPart);
+        } else if (task.getCondition() == "success") {
+            LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.succeededPart);
         }
 
     }
@@ -238,15 +215,12 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
-<<<<<<< HEAD
-        //slideshow.setText("1");
+                //slideshow.setText("1");
 //       coinManager=CoinManager.getCoinManager(this);
 //        coinManager.setCoin("100");
 //        slideshow.setText(coinManager.getCoin());
-=======
         coinManager.setCoin("100");
         slideshow.setText(String.valueOf(coinManager.getCoin()));
->>>>>>> 203f900fac045cd048a6787fcdbfaff7946ebf03
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
