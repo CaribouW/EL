@@ -29,7 +29,6 @@
         android:layout_weight="1"
         android:background="@android:drawable/screen_background_light_transparent"
         android:gravity="center"
-        android:onClick="sendMessage"
         android:text="Have A Good Time!"
         android:textColor="@color/black"
         android:textSize="25sp"
