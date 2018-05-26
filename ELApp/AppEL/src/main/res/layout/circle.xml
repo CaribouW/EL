@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +8,7 @@
     <include
         layout="@layout/circle_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <com.moos.library.CircleProgressView
         android:id="@+id/progressView_circle"
@@ -39,30 +38,32 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:isHideTimeBackground="true"
-        app:isShowDay="true"
+        app:isHideTimeBackground="false"
+        app:isShowDay="false"
         app:isShowHour="true"
-        app:isShowMillisecond="true"
+        app:isShowMillisecond="false"
         app:isShowMinute="true"
         app:isShowSecond="true"
-        app:isTimeTextBold="true"
-        app:timeBgBorderColor="@color/black"
         app:isShowTimeBgBorder="true"
-        app:timeBgBorderSize="@dimen/margin_5"
-        app:timeBgBorderRadius="@dimen/margin_5"
+        app:isShowTimeBgDivisionLine="true"
+        app:isSuffixTextBold="true"
+        app:isTimeTextBold="true"
         app:layout_constraintBottom_toBottomOf="@+id/progressView_circle"
         app:layout_constraintEnd_toEndOf="@+id/progressView_circle"
         app:layout_constraintStart_toStartOf="@+id/progressView_circle"
         app:layout_constraintTop_toTopOf="@+id/progressView_circle"
-        app:suffixGravity="bottom"
-        app:suffixHour="时"
-        app:suffixMillisecond="毫秒"
-        app:suffixMinute="分"
-        app:suffixSecond="秒"
-        app:suffixTextColor="@color/maincolor"
-        app:suffixTextSize="12sp"
-        app:timeTextColor="@color/maincolor"
-        app:timeTextSize="22sp" />
+        app:suffixGravity="center"
+        app:suffixTextColor="@color/black"
+        app:suffixTextSize="30sp"
+        app:timeBgBorderColor="@color/white"
+        app:timeBgBorderRadius="@dimen/margin_5"
+        app:timeBgBorderSize="@dimen/margin_5"
+        app:timeBgColor="@color/black"
+        app:timeBgDivisionLineColor="@color/white"
+        app:timeBgDivisionLineSize="1dp"
+        app:timeBgRadius="5dp"
+        app:timeTextColor="@color/white"
+        app:timeTextSize="30sp" />
 
 
 </android.support.constraint.ConstraintLayout>

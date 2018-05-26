@@ -1,6 +1,5 @@
 package Activitys;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -9,15 +8,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,29 +25,51 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.elapp.AchievementActivity;
+
+
 import com.example.lenovo.elapp.ClockActivity;
+
+import com.example.lenovo.elapp.CalendarActivity;
 import com.example.lenovo.elapp.HelpActivity;
 import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
+import Managers.CoinManager;
 import Managers.FileManager;
 import Managers.ImageManager;
+import Managers.Task;
+import Managers.TimeManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
+import Tmp_lib.appInteraction;
 
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
+    CoinManager coinManager;
+
     private ImageManager imageManager = ImageManager.getImageManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        coinManager = CoinManager.getCoinManager(MainActivity.this);
+        TimeManager timeManager = TimeManager.getTimeManager();
+        TextView textView = (TextView) findViewById(R.id.main_month);
+        textView.setText(timeManager.getMonth());
+        TextView textView2 = (TextView) findViewById(R.id.main_day);
+        textView2.setText(timeManager.getDayOfMonth());
+        TextView textView3 = (TextView) findViewById(R.id.main_year2);
+        textView3.setText(timeManager.getYear());
+
 
         if (!FileManager.IsPermitted(this)) {
             FileManager.requestPermissions(this);
@@ -59,11 +81,20 @@ public class MainActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
+        Button button1 = (Button) findViewById(R.id.main_title);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button button = (Button) findViewById(R.id.main_return);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ClockActivity.class);
                 /*DatePickDialog dialog = new DatePickDialog(MainActivity.this);
                 //设置上下年分限制
                 dialog.setYearLimt(5);
@@ -78,13 +109,70 @@ public class MainActivity extends AppCompatActivity {
                 //设置点击确定按钮回调
                 dialog.setOnSureLisener(null);
                 dialog.show();*/
-                Intent intent = new Intent(MainActivity.this, ClockActivity.class);
                 startActivity(intent);
             }
         });
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(R.drawable.floatingbutton);
         new FloatingPlayer().floatStart(MainActivity.this, imageView);
+
+
+    }
+
+    public void setSingleTask(Task task) {
+
+        if (task.getCondition() == "ready") {
+            //在指定位置新建一个容器
+            LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.readyPart);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout new_ll = new LinearLayout(MainActivity.this);
+            new_ll.setLayoutParams(params);
+            new_ll.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout1.addView(new_ll);
+            //设置textview
+            TextView textView = new TextView(MainActivity.this);
+            textView.setText(task.getTaskName());
+            textView.setTextSize(20);
+            new_ll.addView(textView, 40, 40);
+            if (task.getAnotherApp() != "None") {
+                Button button = new Button(MainActivity.this);
+                new_ll.addView(button, 40, 40);
+                switch (task.getAnotherApp()) {
+                    case "com.gotokeep.keep":
+                        button.setBackgroundResource(R.drawable.keep);
+                        break;
+                    case "com.shanbay.words":
+                        button.setBackgroundResource(R.drawable.scallop_word);
+                        break;
+                    case "com.tencent.tim":
+                        button.setBackgroundResource(R.drawable.tim);
+                        break;
+                    case "com.sina.weibo":
+                        button.setBackgroundResource(R.drawable.weibo);
+                        break;
+                }
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        appInteraction appInteraction1 = new appInteraction();
+                        appInteraction1.openApp(MainActivity.this, task.getAnotherApp());
+                    }
+                });
+            }
+            Button go_button = new Button(MainActivity.this);
+            go_button.setBackgroundResource(R.drawable.ic_chevron_right_black_24dp);
+            new_ll.addView(go_button, 40, 40);
+            go_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, ClockActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else if (task.getCondition() == "success") {
+            LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.succeededPart);
+        }
 
     }
 
@@ -127,8 +215,12 @@ public class MainActivity extends AppCompatActivity {
         slideshow.setGravity(Gravity.CENTER_VERTICAL);
         slideshow.setTypeface(null, Typeface.BOLD);
         slideshow.setTextColor(getResources().getColor(R.color.colorAccent));
-        slideshow.setText("1");
-
+                //slideshow.setText("1");
+//       coinManager=CoinManager.getCoinManager(this);
+//        coinManager.setCoin("100");
+//        slideshow.setText(coinManager.getCoin());
+        coinManager.setCoin("100");
+        slideshow.setText(String.valueOf(coinManager.getCoin()));
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

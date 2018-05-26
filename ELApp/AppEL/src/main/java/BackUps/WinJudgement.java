@@ -15,7 +15,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import Managers.Achievement;
 import Managers.ClockManager;
 import Managers.FileManager;
 import Managers.MusicManager;
@@ -34,7 +33,6 @@ public class WinJudgement {
     private volatile ScreenManager lockScreenManager;
     private volatile MusicManager musicManager;
     private volatile FileManager fileManager;
-    private volatile Achievement achievement;
     private volatile Task task;
     private volatile List<String> musicPathList;
     private volatile boolean IsPause = true;
@@ -56,7 +54,6 @@ public class WinJudgement {
             this.mediaPlayer = mediaPlayer;
             taskManager = TaskManager.getTaskManager(context);
             fileManager = FileManager.getFileManager();
-            achievement = Achievement.getAchievement(context);
             this.FailedClass = TaskFailed.class;
             musicPathList = new LinkedList<>();
         }
