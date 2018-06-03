@@ -31,7 +31,7 @@ public class FloatingPlayer {
         this.context = context;
         imageView.setOnClickListener(v -> {
             if (!IsBegin) {
-                mediaPlayer = musicManager.play(context, mediaPlayer, R.raw.bgm8);
+                mediaPlayer = musicManager.play(context, mediaPlayer, R.raw.bgm12);
                 IsBegin = true;
             }
             if (IsPause) {

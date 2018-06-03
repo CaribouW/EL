@@ -1,25 +1,23 @@
 package com.example.lenovo.elapp;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import Activitys.MainActivity;
 import Managers.Task;
 import Managers.TaskPicker;
+import BackUps.AppInteraction;
 
 public class NewTaskActivity extends AppCompatActivity {
     private CheckBox[] checkBoxes = new CheckBox[4];
     private String mImportance;
     private String[] mRepetition = {"monday", "tuesday"};
     private String mAnotherApp = "com.gotokeep.keep";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,9 +150,12 @@ public class NewTaskActivity extends AppCompatActivity {
                 task.setRingTime(editText5.getText().toString());
                 TaskPicker taskPicker = TaskPicker.getTaskPicker(NewTaskActivity.this);
                 taskPicker.TaskReady(task);
-//                Intent intent = new Intent(NewTaskActivity.this,MainActivity.class);
-//                startActivity(intent);
-                finish();
+                if (mAnotherApp == null) {
+                    finish();
+                } else {
+                    AppInteraction a = new AppInteraction();
+                    a.openApp(NewTaskActivity.this, task.getAnotherApp());
+                }
             }
         });
     }

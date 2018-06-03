@@ -11,8 +11,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,9 +33,6 @@ import com.example.lenovo.elapp.NewTaskActivity;
 import com.example.lenovo.elapp.R;
 import com.example.lenovo.elapp.RemindActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import BackUps.FloatingPlayer;
 import Fragments.Fragment_Lib;
 import Fragments.MainActivityLeftFragment;
@@ -48,7 +43,7 @@ import Managers.Task;
 import Managers.TimeManager;
 import Story.storyMainActivity;
 import Tmp_lib.Music_lib;
-import Tmp_lib.appInteraction;
+import BackUps.AppInteraction;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -155,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        appInteraction appInteraction1 = new appInteraction();
+                        AppInteraction appInteraction1 = new AppInteraction();
                         appInteraction1.openApp(MainActivity.this, task.getAnotherApp());
                     }
                 });

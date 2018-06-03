@@ -1,4 +1,4 @@
-package Tmp_lib;
+package BackUps;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +27,7 @@ import android.text.TextUtils;
  *
  */
 
-public class appInteraction {
+public class AppInteraction {
 
     private final String keep = "http://gotokeep.com/";
     private final String Scallop_word = "https://www.shanbay.com/";
@@ -54,6 +54,12 @@ public class appInteraction {
         }
         if (packageName=="com.shanbay.words"){
             website = Scallop_word;
+        }
+        if(packageName=="com.tencent.tim"){
+            website = tim;
+        }
+        if(packageName=="com.sina.weibo"){
+            website = weibo;
         }
         if (isApkInstalled(context, packageName)){
             Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
