@@ -8,12 +8,11 @@
     tools:context="Story.storyFourthActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewStory4a"
         android:layout_width="339dp"
         android:layout_height="153dp"
         android:layout_centerHorizontal="true"
 
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
@@ -22,12 +21,10 @@
         android:textColor="@color/white"
         android:textSize="40sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStory4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
@@ -35,7 +32,6 @@
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
-        android:layout_marginBottom="72dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_weight="1"
@@ -45,7 +41,7 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonStory4next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent" />
 
 
@@ -70,6 +66,56 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <EditText
+        android:id="@+id/editTextStory4b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:hint="Task"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStory4a" />
+
+    <cn.iwgang.countdownview.CountdownView
+        android:id="@+id/countingDownStory4"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:isHideTimeBackground="false"
+        app:isShowDay="false"
+        app:isShowHour="true"
+        app:isShowMillisecond="false"
+        app:isShowMinute="true"
+        app:isShowSecond="true"
+        app:isShowTimeBgBorder="true"
+        app:isShowTimeBgDivisionLine="true"
+        app:isSuffixTextBold="true"
+        app:isTimeTextBold="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStory4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextStory4b"
+        app:suffixGravity="center"
+        app:suffixTextColor="@color/black"
+        app:suffixTextSize="30sp"
+        app:timeBgBorderColor="@color/white"
+        app:timeBgBorderRadius="@dimen/margin_5"
+        app:timeBgBorderSize="@dimen/margin_5"
+        app:timeBgColor="@color/black"
+        app:timeBgDivisionLineColor="@color/white"
+        app:timeBgDivisionLineSize="1dp"
+        app:timeBgRadius="5dp"
+        app:timeTextColor="@color/white"
+        app:timeTextSize="30sp" />
 
 
 </android.support.constraint.ConstraintLayout>
